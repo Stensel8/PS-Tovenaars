@@ -1,0 +1,18 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  # Houd je GitHub‑Actions up‑to‑date
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # PowerShell‑modules komen via NuGet
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Voorbeeld – versie pinnen/skippen
+    ignore:
+      - dependency-name: "PowerShellStandard.Library"
+        versions: ["3.x"]
