@@ -59,6 +59,8 @@ Volg deze stappen éénmalig om je commits te signen:
    git config --global gpg.program "C:/Program Files (x86)/GnuPG/bin/gpg.exe"
    ```
    Op GitHub/GitHub Desktop zie je nu **Verified** bij je commit.
+   
+   ![GPG deployment success confirmation](resources/GPG-deploy-success.png)
 
 ---
 
