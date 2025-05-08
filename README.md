@@ -47,6 +47,8 @@ Volg deze stappen éénmalig om je commits te signen:
    * Open het `.asc` bestand, kopieer alles.
    * Ga naar GitHub → **Settings → SSH and GPG keys → New GPG key**.
    * Plak je sleutel en sla op.
+   * dubbel klik op de sleutel
+   * klik op change passphrase en vul een wachtwoord in
 
 4. **Configureer Git**
    Open PowerShell en voer uit (vul je eigen Key ID en paden in):
@@ -68,3 +70,4 @@ Volg deze stappen éénmalig om je commits te signen:
 * **Push direct naar main:** niet toegestaan.
 
 Succes met toveren! 🎩✨
+
