@@ -60,7 +60,7 @@ Volg deze stappen éénmalig om je commits te signen:
    ```
    Op GitHub/GitHub Desktop zie je nu **Verified** bij je commit.
    
-   ![GPG-deploy-success](resources/GPG-deploy-success.png)
+   ![GPG deployment success confirmation](resources/GPG-deploy-success.png)
 
 ---
 
