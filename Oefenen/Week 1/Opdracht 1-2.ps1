@@ -1,0 +1,1 @@
+get-service | Where-Object { $_.Name -like "vmware nat service" }
