@@ -68,3 +68,4 @@ Volg deze stappen éénmalig om je commits te signen:
 * **Push direct naar main:** niet toegestaan.
 
 Succes met toveren! 🎩✨
+
