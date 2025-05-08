@@ -26,3 +26,4 @@
 function Test-Number {
     [OutputType([Boolean])]}
     param (int16)
+    
