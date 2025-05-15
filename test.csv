@@ -1,0 +1,264 @@
+Card ID,Card Name,Card URL,Card Description,Labels,Members,Due Date,Attachment Count,Attachment Links,Checklist Item Total Count,Checklist Item Completed Count,Vote Count,Comment Count,Last Activity Date,List ID,List Name,Board ID,Board Name,Archived,Start Date,Due Complete
+680798ab42191bfd88c32f2d,Labels,https://trello.com/c/yMK4YGbu/19-labels,"## Wat zijn labels?
+
+**De eerste 5 groene labels zijn projectcompetenties:**
+
+1. **Analyseren** – Taak draait om informatie verzamelen of iets onderzoeken.
+2. **Adviseren** – Iets aanbevelen of een advies opstellen.
+3. **Ontwerpen** – Je maakt een plan, concept of ontwerp.
+4. **Realiseren** – Je voert iets uit of maakt iets af.
+5. **Manage & Control** – Je houdt overzicht, plant of controleert iets.
+
+**Andere labels:**
+
+- **Copy Request (donkergeel)** – Er is hulp nodig met de tekst (grammatica of algemene woorden).
+- **One more step (oranje)** – Bijna klaar, nog één stap nodig.
+- **Priority (rood)** – Moet als eerste worden opgepakt, is urgent.
+- **Help wanted (lichtgroen)** – Er is hulp nodig bij deze taak.
+- **User story (geel) -** Een user story is een korte beschrijving van wat een gebruiker wil bereiken met een systeem, geformuleerd als: Als [rol] wil ik [doel/functie] zodat ik [reden/waarde].
+- **Epics (paars**) - Een **epic** is een grote, overkoepelende user story die wordt opgedeeld in meerdere kleinere user stories.
+- **Tasks (donkerblauw)** - Een **task** is een concrete, uitvoerbare actie die nodig is om een user story te realiseren.
+- **Question (roze):** - Een **question** is een item wat nog nagevraagd zal worden bij John (docent) of Bas (opdrachtgever).","1. Analyseren (green_dark), 2. Adviseren (green_dark), 3. Ontwerpen (green_dark), 4. Realiseren (green_dark), 5. Manage&Control (green_dark), Copy Request (yellow), Epics (purple_light), Help wanted (lime), Priority (red), Question (pink_dark), Tasks (blue_light), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-13T11:00:26.989Z,680798ab42191bfd88c32e95,Project Resources,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680798ab42191bfd88c32f33,Wekelijkse updates woensdag en vrijdag,https://trello.com/c/syxkahx2/22-wekelijkse-updates-woensdag-en-vrijdag,Elke woensdag en vrijdag meeting met John Tuttert,,,,0,,0,0,0,0,2025-05-13T10:30:37.228Z,680798ab42191bfd88c32e95,Project Resources,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680a34a783924b4d2a0b5ab6,Meeting dinsdag en donderdag 13:00,https://trello.com/c/n1E2sHNa/5-meeting-dinsdag-en-donderdag-1300,Elke dinsdag en donderdag om 13:00 meeting in Discord,,,,0,,0,0,0,0,2025-05-13T10:30:23.849Z,680798ab42191bfd88c32e95,Project Resources,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+68231f5cd6e3ff1adebc62d9,Huidige Sprint: 0,https://trello.com/c/vg3gg0AH/58-huidige-sprint-0,,,,,0,,0,0,0,0,2025-05-13T11:35:53.432Z,680798ab42191bfd88c32e95,Project Resources,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+68231fdd3d33991218960b91,Link naar bestanden,https://trello.com/c/NXNxc9zL/59-link-naar-bestanden,"[https://saxion-my.sharepoint.com/:f:/r/personal/545598_student_saxion_nl/Documents/HBO-ICT%20Project%20Infra?csf=1&web=1&e=zWmofr](https://saxion-my.sharepoint.com/:f:/r/personal/545598_student_saxion_nl/Documents/HBO-ICT%20Project%20Infra?csf=1&web=1&e=zWmofr ""smartCard-inline"")",,,,0,,0,0,0,0,2025-05-13T10:33:12.301Z,680798ab42191bfd88c32e95,Project Resources,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681f31aa31938efd60c650fd,Maak product backlog (PBS & WBS) (Must),https://trello.com/c/88cyP0nb/53-maak-product-backlog-pbs-wbs-must,"**User story:**
+Als groepslid wil ik een product backlog opstellen, inclusief een PBS en WBS, zodat het project overzichtelijk is opgebouwd en we het werk goed kunnen plannen en verdelen over de sprints.
+
+**DoD:**
+
+- Er is een product backlog opgesteld met alle relevante user stories.
+- Elke user story is voorzien van een MoSCoW-prioriteit en inschatting
+- De backlog is afgestemd met de projectgroep.
+- De Product Backlog (PBS & WBS) zijn opgenomen in het plan van aanpak of in een aparte bijlage.
+
+
+**Extra info:**
+Product backlog definition of done story points. Stories (taken) alle taken van het project zover we nu weten. Product backlog is het PBS.
+defineer het pbs als backlog.
+
+plaats op de plek van PBS & WBS de Trello product backlog","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:52:36.879Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dbf6fdb84dd39a66d35dd,Hoofdvraag (Must),https://trello.com/c/uTr0GNVU/13-hoofdvraag-must,"User story:
+
+Als groepslid wil ik een onderbouwde vergelijking maken tussen geschikte MDM- of MAM-oplossingen, zodat ik Interstellar kan adviseren over het best passende totaalplatform voor hun klanten.
+
+‌
+
+DoD:
+
+- De hoofdvraag is afgestemd en goedgekeurd door de opdrachtgever (Bas).
+- Feedback van de opdrachtgever is verwerkt.
+
+‌
+
+Extra informatie:
+
+Pas hoofdvraag aan. Niet “en” gebruiken en verduidelijk het + niet meest. aanscherpen hoofdvraag, waar willen we naartoe.
+
+Houd de hoofdvraag tegen de opdrachtgever. Of we elkaar kunnen vinden. Is dit wat je denkt te bereiken met dit onderzoek.
+
+Vraag door met klanten.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,2,0,0,0,2025-05-10T17:53:28.166Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681f28366ab029fa3820fbae,Opdrachtbeschrijving aangeleverd door de klant (Must),https://trello.com/c/YpEJoT6Z/28-opdrachtbeschrijving-aangeleverd-door-de-klant-must,"**User story:**
+Als groepslid wil ik de opdrachtbeschrijving van de klant samenvatten en toelichten, zodat duidelijk is wat de klant vraagt én hoe wij dat gaan aanpakken binnen ons project.
+
+**DoD:**
+
+- De originele opdracht van de klant is opgenomen (eventueel ingekort of licht aangepast voor leesbaarheid).
+- Er is een korte samenvatting toegevoegd waarin staat wat de klant écht wil bereiken.
+- De samenvatting maakt duidelijk wat de verwachtingen zijn vanuit Interstellar.
+- De vertaling van de opdracht naar onze aanpak (bijv. onderzoeksvorm, scope, doelen) is benoemd.
+- De projectgroep heeft de tekst afgestemd en goedgekeurd.
+- De opdrachtbeschrijving met samenvatting is opgenomen in het verslag.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T17:54:44.950Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681b52d550774ef45713b367,Plan van aanpak (Must),https://trello.com/c/YAledkma/11-plan-van-aanpak-must,"**User story:**
+Als groepslid wil ik een plan van aanpak opstellen, zodat we als projectgroep een duidelijke structuur en werkwijze hebben voor het uitvoeren van het onderzoek.
+
+**DoD:**
+
+De volgende items staan in het document:
+Versieoverzicht
+Inleiding	
+Opdrachtbeschrijving aangeleverd door de klant	
+Probleemanalyse	
+Beschrijving van de organisatie	
+Perspectieven op het probleem	
+Literatuur over belangrijkste begrippen en het probleem	
+Visgraatdiagram van het probleem	
+Business Requirements	
+Hoofdvraag	
+Onderzoeksopzet	
+Deelvragen en de output	
+Deelvragen en de samenhang (handshakes)	
+Methodieken per deelvraag	
+PBS en WBS	
+Studenten, competenties, taken en rollen	","3. Ontwerpen (green_dark), Priority (red), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:32:30.848Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dd2203c787a508942b997,Perspectieven op het probleem (Must),https://trello.com/c/wb0Q93py/16-perspectieven-op-het-probleem-must,"**User story:**
+Als groepslid wil ik de verschillende perspectieven op het probleem in kaart brengen, zodat we de belangen en verwachtingen van de stakeholders goed begrijpen en hier rekening mee kunnen houden in het advies.
+
+**DoD:**
+
+- De stakeholders zijn geïdentificeerd en opgenomen in een overzicht (bijv. tabel met codes).
+- Van elke stakeholder is het perspectief op het probleem is beschreven.
+- De perspectieven zijn gebaseerd op het kennismakingsgesprek met Bas en de gegeven opdracht.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:12:17.113Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680b38b2573f3dff7b981963,Literatuur over belangrijkste begrippen en het probleem (Must),https://trello.com/c/dNFjNBHL/8-literatuur-over-belangrijkste-begrippen-en-het-probleem-must,"User story:
+
+Als groepslid wil ik relevante literatuur verzamelen en bestuderen over de belangrijkste begrippen en het probleem, zodat ik het onderwerp goed begrijp en een sterke inhoudelijke basis kan leggen voor het project.
+
+- Er is literatuur verzameld over kernbegrippen zoals MDM, MAM, BYOD en mobiel beveiligen.
+- De bronnen zijn actueel, betrouwbaar en relevant (bijv. vakliteratuur, whitepapers, normenkaders, praktijkcases). (Voldoet aan CRAAP).
+- De verzamelde informatie is verwerkt in een overzichtelijke samenvatting of document.
+- De relatie tussen de literatuur en het probleem binnen Interstellar is benoemd.","1. Analyseren (green_dark), 5. Manage&Control (green_dark), User story (yellow_dark)",stensel8,,0,,4,0,0,0,2025-05-10T17:55:48.075Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dd4bdc935e244a209574a,Epic's (Business Requirements) (Must),https://trello.com/c/6QdJ0juX/17-epics-business-requirements-must,"**User story:**
+Als groepslid wil ik de business requirements vertalen naar epics, zodat we het project kunnen opdelen in overzichtelijke, sturende onderdelen voor de Scrum-aanpak.
+
+**DoD:**
+
+- De belangrijkste business (epic’s) requirements zijn geformuleerd en verzameld.
+- De epics sluiten aan bij de hoofdvraag en de context van Interstellar.
+- De projectgroep heeft de epics besproken en akkoord bevonden.","1. Analyseren (green_dark), Priority (red), User story (yellow_dark)",,,5,"https://trello.com/c/DTkTze2o/25-de-oplossong-moet-risicos-door-diefstal-van-mobiele-apparaten-verminderen, https://trello.com/c/GNOkLUE7/23-de-oplossing-moet-toekomstbestandig-zijn-voor-mobiel-beheer, https://trello.com/c/LIDmT1uq/24-de-oplossong-moet-risicos-door-verlies-van-mobiele-apparaten-verminderen, https://trello.com/c/WixFqC5B/22-de-oplossing-moet-schaalbaar-zijn-voor-mobiel-beheer, https://trello.com/c/Pcrc3lW0/26-de-oplossong-moet-risicos-door-misbruik-van-mobiele-apparaten-verminderen",0,0,0,0,2025-05-10T18:32:57.915Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680b34942adae9f840b85c67,Epics & User Stories (Must),https://trello.com/c/ziReJeMa/7-epics-user-stories-must,"User story:
+
+Als lid van dit project wil ik duidelijke Epics (business requirements) en User Stories (taken)  zodat ik weet waar het project aan moet houden.
+
+DoD:
+alle US en Epics die we tot nu toe kunnen verzinnen staan in de Product Backlog.","1. Analyseren (green_dark), Priority (red), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:32:51.242Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dd8d8a26d3ad070e82512,Deelvragen en de output (Must),https://trello.com/c/dk0lp5sT/19-deelvragen-en-de-output-must,"**User story:**
+Als groepslid wil ik duidelijke deelvragen opstellen die voortkomen uit de hoofdvraag, zodat het onderzoek gericht uitgevoerd kan worden en iedere deelvraag bijdraagt aan het eindadvies.
+
+**DoD:**
+
+- De deelvragen zijn logisch afgeleid van de hoofdvraag.
+- Elke deelvraag behandelt een specifiek aspect van het probleem of onderwerp.
+- De vragen zijn concreet, onderzoekbaar en relevant voor de projectdoelstelling.
+- Bij elke deelvraag is (kort) aangegeven wat de verwachte output of beantwoording oplevert.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T17:57:01.843Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dd9a4c1ea845f2049b83b,Methodieken per deelvraag (Must),https://trello.com/c/UO0DCbyD/21-methodieken-per-deelvraag-must,"**User story:**
+Als groepslid wil ik per deelvraag een passende onderzoeksmethode kiezen en onderbouwen, zodat het onderzoek gestructureerd en betrouwbaar uitgevoerd kan worden.
+
+**DoD:**
+
+- Voor elke deelvraag is een passende onderzoeksmethode gekozen (bijv. literatuuronderzoek, interview, vergelijking).
+- De keuze voor de methode is onderbouwd met een korte toelichting.
+- Er is rekening gehouden met haalbaarheid, betrouwbaarheid en relevantie.
+- De methodieken sluiten logisch aan bij de inhoud van de deelvragen.
+- De methodes zijn afgestemd binnen de projectgroep.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:13:36.184Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dd9261168bd7233057feb,Deelvragen en de samenhang (handshakes) (Must),https://trello.com/c/QWE8U2aD/20-deelvragen-en-de-samenhang-handshakes-must,"**User story:**
+Als groepslid wil ik de samenhang tussen de deelvragen inzichtelijk maken, zodat duidelijk is hoe ze elkaar aanvullen en gezamenlijk bijdragen aan de beantwoording van de hoofdvraag.
+
+**DoD:**
+
+- De samenhang tussen de deelvragen is visueel of tekstueel weergegeven (bijv. in een schema of toelichting).
+- Er is beschreven welke deelvragen op elkaar aansluiten of afhankelijk van elkaar zijn.
+- Het verband tussen deelvragen en de hoofdvraag is duidelijk benoemd.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:13:34.796Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680798ab42191bfd88c32f0d,Fuctioneel ontwerp (Must),https://trello.com/c/zXipK5om/3-fuctioneel-ontwerp-must,"**User story:**
+Als groepslid wil ik een functioneel ontwerp opstellen, zodat duidelijk is welke functies en mogelijkheden de gekozen oplossing moet bieden en hoe deze aansluiten op de behoeften van Interstellar.
+
+**DoD:**
+
+- Het functioneel ontwerp beschrijft de gewenste functies van de oplossing (bijv. MFA, remote wipe, appbeheer).
+- Er is rekening gehouden met verschillende scenario’s, zoals BYOD en corporate devices.
+- Het ontwerp sluit aan op de eisen van Interstellar en hun klantomgevingen.
+- De functies zijn afgestemd op de eerder geformuleerde requirements en user stories.
+- Het ontwerp is visueel of tekstueel gestructureerd en begrijpelijk voor stakeholders.
+- De projectgroep heeft het ontwerp besproken en goedgekeurd.
+- Het ontwerp is opgenomen in het verslag als onderdeel van het advies.","3. Ontwerpen (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:20:01.244Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+68079a6c6b87c4fbd9dc356d,Technisch Ontwerp (Must),https://trello.com/c/qJBeoSDk/1-technisch-ontwerp-must,"**User story:**
+Als groepslid wil ik een technisch ontwerp opstellen, zodat duidelijk is hoe de gekozen oplossing functioneert en geïmplementeerd kan worden binnen de context van Interstellar.
+
+**DoD:**
+
+- Het ontwerp beschrijft de architectuur of opbouw van de gekozen oplossing.
+- Er is uitgewerkt hoe de verschillende componenten samenwerken (bijv. MDM/MAM-tool, apparaten, gebruikersrollen).
+- Het ontwerp houdt rekening met de beheervormen van Interstellar (Launch, Boost, Accelerate).
+- Veiligheidsmaatregelen (zoals encryptie, MFA, remote wipe) zijn meegenomen in het ontwerp.
+- Eventuele alternatieven of variaties (bijv. per klanttype) zijn benoemd.
+- Het ontwerp is visueel ondersteund (bijv. schema, diagram).
+- Het ontwerp is besproken en afgestemd met de projectgroep en – indien mogelijk – met Bas.
+- Het technisch ontwerp is opgenomen in het verslag.","3. Ontwerpen (green_dark), 4. Realiseren (green_dark), User story (yellow_dark)",stensel8,,0,,0,0,0,0,2025-05-10T17:54:02.833Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681e7b254e76835aa02b85f8,Evaluatie MDM-oplossingen (Must),https://trello.com/c/hhgR8Kka/27-evaluatie-mdm-oplossingen-must,"**User story:**
+Als groepslid wil ik MDM-oplossingen evalueren op basis van vastgestelde criteria, zodat we kunnen bepalen in hoeverre deze oplossing nog passend is voor Interstellar en haar klanten.
+
+**DoD:**
+
+- MDM-oplossingen zijn onderzocht op functionaliteiten, beheeropties en beveiligingsmogelijkheden.
+- De evaluatie is uitgevoerd aan de hand van vooraf opgestelde criteria (bijv. kosten, gebruiksvriendelijkheid, integraties, platformondersteuning).
+- Er is rekening gehouden met Interstellar’s werkwijze (bijv. Microsoft-first, BYOD, compliance-eisen).
+- De voor- en nadelen zijn overzichtelijk samengevat.
+- De bevindingen zijn besproken in de projectgroep.
+- De evaluatie is opgenomen in het verslag en vormt input voor de uiteindelijke vergelijking en het advies.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-13T11:27:57.826Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+6819f834a278a1dfd69d5db7,Beschrijving van organisatie (Should),https://trello.com/c/YlziF4ZJ/9-beschrijving-van-organisatie-should,"**User story:**
+Als groepslid wil ik een duidelijke beschrijving maken van Interstellar als organisatie, zodat ik het project kan plaatsen binnen de juiste context en belanghebbenden beter begrijp.
+
+**DoD:**
+
+- De beschrijving bevat basisinformatie over Interstellar (o.a. fusieachtergrond, omvang, diensten).
+- De drie beheervormen (Launch, Boost, Accelerate) zijn kort toegelicht.
+- Relevante werkwijze en positionering in de markt zijn benoemd.
+- De relatie tussen de organisatie en het onderwerp (mobiel beheer) is helder gemaakt.
+- De tekst is opgenomen in het verslag en afgestemd met de projectgroep.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:12:58.319Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681f2e22e21e54dead339037,Inleiding (Should),https://trello.com/c/f3KEyAKU/29-inleiding-should,"**User story:**
+Als groepslid wil ik een heldere en complete inleiding schrijven, zodat de lezer direct begrijpt waar het project over gaat, wat de achtergrond is van Interstellar en wat de aanleiding is voor het onderzoek.
+
+**DoD:**
+
+- De aanleiding van het project is kort toegelicht vanuit de actuele situatie rond mobiel werken en beveiliging.
+- De opdracht van Interstellar is beknopt maar duidelijk weergegeven, met focus op het doel en de noodzaak.
+- Interstellar is als organisatie kort voorgesteld (wie ze zijn, waar ze voor staan, wat ze doen).
+- Er is een korte beschrijving van de relevante thema’s binnen Interstellar (zoals infrastructuur, beveiliging, productiviteit).
+- De betrokken projectleden zijn benoemd.
+- De contactpersoon van de opdrachtgever is vermeld.
+- De inleiding is afgestemd binnen de projectgroep en opgenomen in het verslag.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-10T18:14:39.406Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+68232960fcbd4a96bbb30d1a,Multi-Criteria-Analyse (MCA) uitwerken met producten (Must),https://trello.com/c/ruT2YHzO/61-multi-criteria-analyse-mca-uitwerken-met-producten-must,,"1. Analyseren (green_dark), 4. Realiseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-13T11:21:05.991Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+6823294038f5f2e104d8bb7c,Bepaal criteria voor MCA (Must),https://trello.com/c/wpxGFV0W/60-bepaal-criteria-voor-mca-must,"**User story:**
+Als groepslid wil ik criteria bepalen voor de Multi Criteria Analyse, zodat we de verschillende MDM-oplossingen objectief en gestructureerd met elkaar kunnen vergelijken.
+
+**DoD:**
+
+- Er is een lijst met relevante criteria opgesteld, passend bij de wensen en eisen van Interstellar (bijv. kosten, beheer, integraties, gebruiksgemak, beveiliging, ondersteuning).
+- De criteria zijn concreet en meetbaar geformuleerd.
+- De criteria zijn besproken en afgestemd binnen de projectgroep.
+- De criteria zijn gevalideerd met de opdrachtgever of verantwoordelijke (indien mogelijk).
+- De vastgestelde criteria zijn opgenomen in het verslag en vormen de basis voor de MCA.","1. Analyseren (green_dark), User story (yellow_dark)",,,0,,0,0,0,0,2025-05-13T11:21:11.296Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dd7bfeb7caa3d9b372c65,Onderzoeksopzet,https://trello.com/c/emqwKifS/18-onderzoeksopzet,,1. Analyseren (green_dark),,,4,"https://trello.com/c/dk0lp5sT/19-deelvragen-en-de-output, https://trello.com/c/QWE8U2aD/20-deelvragen-en-de-samenhang-handshakes, https://trello.com/c/UO0DCbyD/21-methodieken-per-deelvraag, https://trello.com/c/88cyP0nb/53-maak-product-backlog-pbs-wbs",0,0,0,0,2025-05-10T11:00:57.173Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681dc9e478e4be2a9bdef9ad,Probleemanalyse,https://trello.com/c/Q35eb0fC/15-probleemanalyse,,1. Analyseren (green_dark),,,6,"https://trello.com/c/uTr0GNVU/13-hoofdvraag, https://trello.com/c/YlziF4ZJ/9-beschrijving-van-organisatie, https://trello.com/c/wb0Q93py/16-perspectieven-op-het-probleem, https://trello.com/c/dNFjNBHL/8-literatuur-over-belangrijkste-begrippen-en-het-probleem, https://trello.com/c/XR2EyicC/6-visgraatdiagram-maken-verbeteren, https://trello.com/c/6QdJ0juX/17-epics-business-requirements",0,0,0,0,2025-05-10T10:18:39.675Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681e783057c20f44ec1fde4a,De oplossong moet risico's door misbruik van mobiele apparaten verminderen.,https://trello.com/c/Pcrc3lW0/26-de-oplossong-moet-risicos-door-misbruik-van-mobiele-apparaten-verminderen,"User story:
+
+Als opdrachtgever wil ik een oplossing voor het beheren van mobiele apparaten dat risico’s door misbruik van mobiele apparaten vermindert.",Epics (purple_light),,,0,,0,0,0,0,2025-05-10T18:16:11.041Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681e78145d2baf68d0c7ea7c,De oplossong moet risico's door diefstal van mobiele apparaten verminderen.,https://trello.com/c/DTkTze2o/25-de-oplossong-moet-risicos-door-diefstal-van-mobiele-apparaten-verminderen,"User story:
+
+Als opdrachtgever wil ik een oplossing voor het beheren van mobiele apparaten dat risico’s door diefstal van mobiele apparaten vermindert.",Epics (purple_light),,,0,,0,0,0,0,2025-05-10T18:16:17.024Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681e77fba351d4b451ba7b0b,De oplossong moet risico's door verlies van mobiele apparaten verminderen.,https://trello.com/c/LIDmT1uq/24-de-oplossong-moet-risicos-door-verlies-van-mobiele-apparaten-verminderen,"User story:
+
+Als opdrachtgever wil ik een oplossing voor het beheren van mobiele apparaten dat risico’s door verlies van mobiele apparaten vermindert.",Epics (purple_light),,,0,,0,0,0,0,2025-05-10T18:16:22.838Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681e77bc1d45349ea0883a07,De oplossing moet toekomstbestendig zijn voor mobiel beheer bij Interstellar.,https://trello.com/c/GNOkLUE7/23-de-oplossing-moet-toekomstbestendig-zijn-voor-mobiel-beheer-bij-interstellar,"User story:
+
+Als opdrachtgever wil ik een toekomstbestendige oplossing voor het beheren van mobiele apparaten, zodat ik deze langdurig kan gebruiken.",Epics (purple_light),,,0,,0,0,0,0,2025-05-10T18:16:33.561Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+681e778a70f1a3e8cd539d38,De oplossing moet schaalbaar zijn voor mobiel beheer bij Interstellar.,https://trello.com/c/WixFqC5B/22-de-oplossing-moet-schaalbaar-zijn-voor-mobiel-beheer-bij-interstellar,"User story:
+
+Als opdrachtgever wil ik een schaalbare oplossing voor het beheren van mobiele apparaten, zodat ik deze eenvoudig kan opschalen.",Epics (purple_light),,,0,,0,0,0,0,2025-05-10T18:16:40.071Z,680798ab42191bfd88c32e97,To Do / Backlog,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680798ab42191bfd88c32f0b,1e week voortgang bespreken,https://trello.com/c/lMybo3nN/2-1e-week-voortgang-bespreken,,,"5304871, 545598, 5529851, stensel8",2025-04-26T08:30:00.000Z,0,,0,0,0,0,2025-05-09T08:43:44.437Z,680798ab42191bfd88c32e9a,Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,2025-04-26T06:00:00.000Z,true
+680798ab42191bfd88c32f15,Verkenningsopdracht maken,https://trello.com/c/bRoB5Qcd/7-verkenningsopdracht-maken,,,"545598, stensel8",2025-04-25T12:15:16.902Z,0,,0,0,0,0,2025-05-09T08:44:04.920Z,680798ab42191bfd88c32e9a,Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,2025-04-23T06:00:00.000Z,true
+680a344803dae8ea0332dfed,Het eerste gesprek notuleren & samenvatten naar een Word-bestand,https://trello.com/c/Ae5pSkh9/4-het-eerste-gesprek-notuleren-samenvatten-naar-een-word-bestand,,,stensel8,2025-04-23T14:00:00.000Z,0,,0,0,0,0,2025-05-09T08:44:19.663Z,680798ab42191bfd88c32e9a,Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,true
+6820edc4d57c93caac09316c,Vooronderzoek naar enkele concurrenten van Microsoft Intune,https://trello.com/c/ZLafSxQH/56-vooronderzoek-naar-enkele-concurrenten-van-microsoft-intune,"'- Microsoft Intune
+- Google Endpoint manager
+- Mobile Iron
+- Cisco Meraki
+- VMware Workspace ONE (Was voorheen VMware Airwatch)
+- Jamf Pro
+- 42Gears SureMDM
+- IBM Master Data Management","1. Analyseren (green_dark), Tasks (blue_light)",stensel8,,0,,0,0,0,0,2025-05-12T20:08:29.948Z,680798ab42191bfd88c32e9a,Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,true
+6820f375d2236090722afe95,Status toevoegen aan Plan van Aanpak,https://trello.com/c/16m3sR8I/57-status-toevoegen-aan-plan-van-aanpak,"Ik had het idee om een kort overzichtje te maken qua status en voortgang in het Plan van Aanpak. Het doel was om zo meer duidelijkheid te scheppen over waar we nu staan + waar we nog naartoe kunnen werken.
+
+![image.png](https://trello.com/1/cards/6820f375d2236090722afe95/attachments/6820f42e642932d0ba0b20d1/download/image.png)",5. Manage&Control (green_dark),stensel8,,1,https://trello.com/1/cards/6820f375d2236090722afe95/attachments/6820f42e642932d0ba0b20d1/download/image.png,0,0,0,0,2025-05-11T19:02:18.962Z,680798ab42191bfd88c32e9a,Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,false
+680b329bd15aa1222feb0972,Visgraatdiagram maken (Must),https://trello.com/c/XR2EyicC/6-visgraatdiagram-maken-must,"**User story:**
+Als groepslid wil ik een visgraatdiagram maken, zodat we de oorzaken van het centrale probleem visueel kunnen structureren en beter inzicht krijgen in onderliggende factoren.
+
+**DoD:**
+
+- Het centrale probleem is duidelijk geformuleerd in het diagram.
+- De hoofdcategorieën van oorzaken zijn benoemd.
+- Per categorie zijn relevante onderliggende oorzaken uitgewerkt.
+- Het diagram is logisch opgebouwd en visueel duidelijk.
+- Het visgraatdiagram is besproken met de projectgroep en eventueel bijgesteld.
+- Het diagram is opgenomen in het verslag of gebruikt als basis voor verdere analyse.","1. Analyseren (green_dark), User story (yellow_dark)",stensel8,,0,,0,0,0,0,2025-05-13T11:11:29.644Z,680798ab42191bfd88c32e9a,Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,true
+6820eccbd005bec952139176,SH-04: Wat is het perspectief van het IT-team van Interstellar omtrent de opdracht? Wat is hun belang hierin en wat zouden zij fijn vinden? - Bas,https://trello.com/c/8qKKCfPT/55-sh-04-wat-is-het-perspectief-van-het-it-team-van-interstellar-omtrent-de-opdracht-wat-is-hun-belang-hierin-en-wat-zouden-zij-fij,,Question (pink_dark),stensel8,,0,,0,0,0,0,2025-05-13T11:11:43.083Z,682328ed2aa5d48aaeb5d95d,Questions Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,true
+681c947d9ef30e204f75acc3,Wil je ook een prototype zien? - Bas,https://trello.com/c/jNJzt783/12-wil-je-ook-een-prototype-zien-bas,,Question (pink_dark),stensel8,,0,,0,0,0,0,2025-05-13T11:11:44.115Z,682328ed2aa5d48aaeb5d95d,Questions Done,680798ab42191bfd88c32e9b,HBO-ICT - Sprint 0,false,,true

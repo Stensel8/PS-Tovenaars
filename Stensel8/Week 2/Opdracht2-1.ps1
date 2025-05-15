@@ -1,3 +1,5 @@
+# Het scherm leeghalen
+Clear-Host
 
 # Alle processen ophalen en in een variabele zetten
 $myprocess = Get-Process
