@@ -24,11 +24,16 @@ function Assert-ValidDomainName {
 
 function Assert-ValidPassword {
     param (
-        [String] $testPassword
+        [Security.SecureString] $testPassword
     )
+    # Convert SecureString to plain text for validation
+    $plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($testPassword))
     # Check using regex
     # At least one digit, one lowercase letter, one capital letter, and one special character. Minimum length 8 characters, no maximum
-    return ($testPassword -match '((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,})')
+    $result = ($plainPassword -match '((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,})')
+    # Clear plain text from memory
+    $plainPassword = $null
+    return $result
 }
 
 
@@ -47,15 +52,10 @@ while (!$result)
 # take the first part of the domain name
 $NetBiosName = $newDomainName.Split('.')[0].ToUpper()
 # remove dashes (those are valid in DNS domain names, but not in NetBIOS names) 
-$NetBiosName = $NetBiosName.Replace('-','')
-# and trim to a maximum length of 14 characters
-$NetBiosName = $NetBiosName.Substring(0,[System.Math]::Min(14,$NetBiosName.Length))
-
-$defaultPwd = "P@ssw0rd"
 do {
-    $newPwd = Read-Host -Prompt "Enter a safe mode administrator password (default is $defaultPwd)"
-    if ($newPwd -eq '') {
-        $newPwd = $defaultPwd
+    $newPwd = Read-Host -Prompt "Enter a safe mode administrator password (default is $defaultPwd)" -AsSecureString
+    if ([System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($newPwd)) -eq '') {
+        $newPwd = ConvertTo-SecureString $defaultPwd -AsPlainText -Force
     }
     $result = Assert-ValidPassword -testPassword $newPwd
     if (!$result) {
@@ -63,6 +63,8 @@ do {
     }
 }
 while (!$result)
+
+$password = $newPwd
 
 $password=ConvertTo-SecureString $newPwd -AsPlainText -Force
 

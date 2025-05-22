@@ -11,7 +11,7 @@ Lekker toveren met PowerShell.
 * [Branching Regels](#branching-regels)
 
 ---
-## Configure VM
+## Configure VMs
 Run the configure-vm.ps1 to turn off and disable unnecessary services and features for Windows VMs
 
 
