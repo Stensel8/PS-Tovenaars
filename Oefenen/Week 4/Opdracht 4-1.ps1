@@ -1,0 +1,1 @@
+Get-ChildItem -Path C:\ -recurse | Where-Object {$_.FileSize -gt 500MB} | Where-Object {$_.LastWriteTime -gt (get-date).adddays(-30)}
