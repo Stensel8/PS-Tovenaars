@@ -3,6 +3,17 @@
 
 # Run as Administrator
 
+$principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "Start het script opnieuw met administrator-rechten..." -ForegroundColor Yellow
+    # Herstart PowerShell als admin, met dezelfde parameters
+    Start-Process -FilePath "PowerShell" `
+                  -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" `
+                  -Verb RunAs
+    Exit
+}
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+
 # Disable Windows Update
 Write-Host "Disabling Windows Update..."
 Stop-Service wuauserv -Force
@@ -52,17 +63,4 @@ Write-Host "Disabling Fast Startup..."
 $regPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power"
 Set-ItemProperty -Path $regPath -Name HiberbootEnabled -Value 0
 
-# Disable unnecessary scheduled tasks
-Write-Host "Disabling unnecessary scheduled tasks..."
-$tasks = @(
-    "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan",
-    "\Microsoft\Windows\UpdateOrchestrator\UpdateModelTask",
-    "\Microsoft\Windows\WindowsUpdate\sih"
-)
-foreach ($task in $tasks) {
-    try {
-        Disable-ScheduledTask -TaskPath (Split-Path $task -Parent) -TaskName (Split-Path $task -Leaf)
-    } catch {}
-}
-
-Write-Host "VM optimization complete."
+Write-Host "VM optimization is done!." -ForegroundColor Green
