@@ -38,7 +38,9 @@ Volg deze stappen éénmalig om je commits te signen:
    * Open **Kleopatra**.
    * Kies **Certificate → New Certificate** → **Create a personal OpenPGP key pair**.
    * Vul je naam en exact je GitHub-e‑mail in.
-   * Selecteer RSA 4096, voltooi de wizard.
+   * Selecteer curve25519, voltooi de wizard.
+   * **Optioneel**: Vink aan dat je de key met een wachtwoord wilt beschermen.
+   * Kies een einddatum zodat de key niet onbeperkt geldig is.
    * Noteer je **Key ID** (bijv. `0xABCD1234EF56`).
 
 3. **Exporteer en registreer je publieke sleutel**
