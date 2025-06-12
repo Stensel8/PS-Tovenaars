@@ -1,0 +1,2 @@
+$myServices = Get-Service
+
