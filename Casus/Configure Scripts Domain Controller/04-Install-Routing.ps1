@@ -17,7 +17,7 @@ $lanIPConfiguration = Get-NetIPConfiguration -Detailed | Where-Object {
 $lanPrefixLength=$lanIPConfiguration.IPv4Address.prefixLength
 
 # Create subnet mask in dotted decimal notation. That feature does not exist in Powershell, we'll have to write our own functionality for this.
-# Convert the prefix length into a 32 bit integer, starting with <prefixLength> 1's and filled out with (32-<prefixLenght>) 0's
+# Convert the prefix length into a 32 bit integer, starting with <prefixLength> 1's and filled out with (32-<prefixLength>) 0's
 $subnetMaskNumber = [UInt32](([Math]::Pow(2,$lanPrefixLength)-1) * [Math]::Pow(2,32-$lanPrefixLength)) 
 # Split this number into 4 bytes:
 $subnetMaskBytes=[System.BitConverter]::GetBytes($subnetMaskNumber)
