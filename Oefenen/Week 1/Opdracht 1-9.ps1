@@ -2,7 +2,7 @@ $continue = $true
 $hostnames = @()
 
 while ($continue) {
-    $hostname = Read-Host "type a ip-addresss (to stop type 'exit')"
+    $hostname = Read-Host "type an IP address (to stop type 'exit')"
     if ($hostname -eq 'exit') {
         $continue = $false
     }  else {
@@ -10,14 +10,16 @@ while ($continue) {
     }
 }
 
-ping-adress
-
-function ping-adress {
+function PingAddress {
     foreach ($one in $hostnames) {
-        Test-Connection -IPv4 $one -Count 3
-        Write-Host "Finished pinging $one." -ForegroundColor Blue
-        Write-Host #empty line  
+        try {
+            Test-Connection -ComputerName $one -Count 3 -ErrorAction Stop
+            Write-Host "Successfully pinged $one." -ForegroundColor Green
+        }
+        catch {
+            Write-Host "Failed to ping $one`: $($_.Exception.Message)" -ForegroundColor Red
+        }
     }
-
 }
 
+PingAddress
