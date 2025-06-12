@@ -3,6 +3,33 @@ if ((Get-WindowsFeature -Name AD-Domain-Services).InstallState -ne "Installed") 
     Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools
 }
 
+# Check if machine is already a domain controller
+try {
+    $isDomainController = $null -ne (Get-ADDomainController -Discover -ErrorAction Stop)
+    if ($isDomainController) {
+        Write-Host "This machine is already a domain controller. Domain promotion is not needed." -ForegroundColor Yellow
+        exit 0
+    }
+} catch {
+    # Not a domain controller, proceed with the script
+}
+
+# Get current computer name and offer to change it
+$currentName = $env:COMPUTERNAME
+$changeCompName = Read-Host -Prompt "Current computer name is '$currentName'. Do you want to change it? (Y/N, default is N)"
+
+if ($changeCompName -eq "Y" -or $changeCompName -eq "y") {
+    $newName = Read-Host -Prompt "Enter the new computer name"
+    if (-not [string]::IsNullOrWhiteSpace($newName)) {
+        try {
+            Rename-Computer -NewName $newName -Force -ErrorAction Stop
+            Write-Host "Computer name will be changed to '$newName' after restart." -ForegroundColor Green
+        } catch {
+            Write-Host "Failed to rename computer: $_" -ForegroundColor Red
+        }
+    }
+}
+
 # Set up domain controller and reboot
 
 # Helper function to check whether a domain name is valid
@@ -109,17 +136,30 @@ do {
 
 Write-Host "Installing Active Directory Forest..." -ForegroundColor Green
 
+# Determine the appropriate domain functional level based on Windows Server version
+$osInfo = Get-WmiObject -Class Win32_OperatingSystem
+$osVersion = $osInfo.Version
+$osCaption = $osInfo.Caption
+
+# Determine the best domain functional level based on OS version
+$domainLevel = "Default" # Default will select the highest available level
+
+# Can add specific version checks if needed for future Server versions
+Write-Host "Detected OS: $osCaption" -ForegroundColor Green
+Write-Host "Using domain functional level: $domainLevel" -ForegroundColor Green
+
 try {
+    # Use named parameters properly - remove the back-ticks for troubleshooting
     Install-ADDSForest `
-        -CreateDnsDelegation:$false `
-        -DatabasePath "C:\Windows\NTDS" `
-        -DomainMode WinThreshold `
         -DomainName $newDomainName `
         -DomainNetbiosName $NetBiosName `
-        -InstallDns:$true `
-        -NoRebootOnCompletion:$false `
+        -DatabasePath "C:\Windows\NTDS" `
         -LogPath "C:\Windows\NTDS" `
         -SysvolPath "C:\Windows\SYSVOL" `
+        -DomainMode $domainLevel `
+        -ForestMode $domainLevel `
+        -InstallDns:$true `
+        -NoRebootOnCompletion:$false `
         -SafeModeAdministratorPassword $newPwd `
         -Force:$true
 }
