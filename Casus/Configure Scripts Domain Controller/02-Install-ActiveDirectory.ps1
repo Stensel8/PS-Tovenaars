@@ -1,4 +1,3 @@
-
 # Install Active Directory Domain Services runtime if needed
 if ((Get-WindowsFeature -Name AD-Domain-Services).InstallState -ne "Installed") {
     Install-WindowsFeature -Name AD-Domain-Services -IncludeAllSubFeature -IncludeManagementTools
@@ -6,78 +5,125 @@ if ((Get-WindowsFeature -Name AD-Domain-Services).InstallState -ne "Installed") 
 
 # Set up domain controller and reboot
 
-# Helper function to check whether a domain name is valid. Used when asking for a new domain name
+# Helper function to check whether a domain name is valid
 function Assert-ValidDomainName {
-    param (
-        [String] $domainName
-    )
-
+    param ([String] $domainName)
+    
     # Check length: minimum 2, maximum 253
-    . {$valid = ($domainName.Length -ge 2) -and ($computerName.Length -le 253)
-    # check for invalid characters using regular expressions. 
-    # Valid characters are: first and last character alphanumeric, characters in between alphanumeric or '-'
-    # then a dot, then more alphanumeric characters.
-    $valid = $valid -and ($domainName -match "(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)(?:\.|$)){2,}") 
-    } | Out-Null
-    return $valid
+    if (($domainName.Length -lt 2) -or ($domainName.Length -gt 253)) {
+        return $false
+    }
+    
+    # Basic DNS validation - simplified but more reliable
+    # Must contain at least one dot, valid chars only
+    if ($domainName -notmatch '^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)+$') {
+        return $false
+    }
+    
+    # Check each label length (max 63 chars per label)
+    $labels = $domainName.Split('.')
+    foreach ($label in $labels) {
+        if ($label.Length -gt 63 -or $label.Length -eq 0) {
+            return $false
+        }
+    }
+    
+    return $true
 }
 
+# More secure password validation using NetworkCredential
 function Assert-ValidPassword {
-    param (
-        [Security.SecureString] $testPassword
-    )
-    # Convert SecureString to plain text for validation
-    $plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($testPassword))
-    # Check using regex
-    # At least one digit, one lowercase letter, one capital letter, and one special character. Minimum length 8 characters, no maximum
-    $result = ($plainPassword -match '((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,})')
-    # Clear plain text from memory
-    $plainPassword = $null
-    return $result
+    param ([Security.SecureString] $testPassword)
+    
+    try {
+        # Use NetworkCredential for temporary plaintext access
+        $credential = New-Object System.Net.NetworkCredential("temp", $testPassword)
+        $plainPassword = $credential.Password
+        
+        # Validate complexity: min 8 chars, digit, lowercase, uppercase, special char
+        $hasDigit = $plainPassword -match '\d'
+        $hasLower = $plainPassword -match '[a-z]'
+        $hasUpper = $plainPassword -match '[A-Z]'
+        $hasSpecial = $plainPassword -match '[\W_]'
+        $isLongEnough = $plainPassword.Length -ge 8
+        
+        $result = $hasDigit -and $hasLower -and $hasUpper -and $hasSpecial -and $isLongEnough
+        
+        return $result
+    }
+    finally {
+        # Explicit cleanup
+        if ($credential) { 
+            $credential = $null 
+        }
+        [System.GC]::Collect()
+        [System.GC]::WaitForPendingFinalizers()
+    }
 }
 
-
+# Get domain name
 $defaultDomainName = "scripting.local"
 do {
     $newDomainName = Read-Host -Prompt "Enter the name for the new domain (default is $defaultDomainName)"
-    if ($newDomainName -eq '') { $newDomainName=$defaultDomainName }    
+    if ([string]::IsNullOrWhiteSpace($newDomainName)) { 
+        $newDomainName = $defaultDomainName 
+    }    
     $result = Assert-ValidDomainName -domainName $newDomainName
     if (!$result) {
-        Write-Host "Invalid domain name"
+        Write-Host "Invalid domain name. Use format like 'example.local' or 'company.internal'" -ForegroundColor Red
     }
-}
-while (!$result) 
+} while (!$result) 
 
-# derive NetBIOS name from domain name
-# take the first part of the domain name
-$NetBiosName = $newDomainName.Split('.')[0].ToUpper()
-# remove dashes (those are valid in DNS domain names, but not in NetBIOS names) 
+# Derive NetBIOS name from domain name
+$NetBiosName = $newDomainName.Split('.')[0].ToUpper() -replace '[^A-Z0-9]', ''
+if ($NetBiosName.Length -gt 15) {
+    $NetBiosName = $NetBiosName.Substring(0, 15)
+}
+
+Write-Host "NetBIOS name will be: $NetBiosName" -ForegroundColor Green
+
+# Get safe mode administrator password
 do {
-    $newPwd = Read-Host -Prompt "Enter a safe mode administrator password (default is $defaultPwd)" -AsSecureString
-    if ([System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($newPwd)) -eq '') {
-        $newPwd = ConvertTo-SecureString $defaultPwd -AsPlainText -Force
+    $newPwd = Read-Host -Prompt "Enter a safe mode administrator password (min 8 chars, mixed case, digit, special char)" -AsSecureString
+    
+    # Check if password is empty
+    $bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($newPwd)
+    try {
+        $length = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr).Length
+        if ($length -eq 0) {
+            Write-Host "Password cannot be empty." -ForegroundColor Red
+            $result = $false
+            continue
+        }
+    } finally {
+        [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
     }
+    
     $result = Assert-ValidPassword -testPassword $newPwd
     if (!$result) {
-        Write-Host "Password does not meet complexity rules"
+        Write-Host "Password does not meet complexity requirements:" -ForegroundColor Red
+        Write-Host "- Minimum 8 characters" -ForegroundColor Yellow
+        Write-Host "- At least one digit, lowercase, uppercase, and special character" -ForegroundColor Yellow
     }
+} while (!$result)
+
+Write-Host "Installing Active Directory Forest..." -ForegroundColor Green
+
+try {
+    Install-ADDSForest `
+        -CreateDnsDelegation:$false `
+        -DatabasePath "C:\Windows\NTDS" `
+        -DomainMode WinThreshold `
+        -DomainName $newDomainName `
+        -DomainNetbiosName $NetBiosName `
+        -InstallDns:$true `
+        -NoRebootOnCompletion:$false `
+        -LogPath "C:\Windows\NTDS" `
+        -SysvolPath "C:\Windows\SYSVOL" `
+        -SafeModeAdministratorPassword $newPwd `
+        -Force:$true
 }
-while (!$result)
-
-$password = $newPwd
-
-$password=ConvertTo-SecureString $newPwd -AsPlainText -Force
-
-Install-ADDSForest `
--CreateDnsDelegation:$false `
--DatabasePath "C:\Windows\NTDS" `
--DomainMode WinThreshold `
--DomainName $newDomainName `
--DomainNetbiosName $NetBiosName `
--InstallDns:$true `
--NoRebootOnCompletion:$false `
--LogPath "C:\Windows\NTDS" `
--SysvolPath "C:\Windows\SYSVOL" `
--SafeModeAdministratorPassword $password `
--Force:$true
-
+catch {
+    Write-Host "Installation failed: $_" -ForegroundColor Red
+    exit 1
+}
