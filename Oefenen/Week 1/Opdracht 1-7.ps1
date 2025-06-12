@@ -4,7 +4,7 @@ $hostnames = @()
 
 while ($contiue) {
     $hostname = Read-Host "type a hostname (to stop type 'exit')"
-    if ($hostnames -eq 'exit') {
+    if ($hostname -eq 'exit') {
         $contiue = $false
     }  else {
         $hostnames += $hostname
