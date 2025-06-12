@@ -1,10 +1,10 @@
-$contiue = $true
+$continue = $true
 $hostnames = @()
 
-while ($contiue) {
+while ($continue) {
     $hostname = Read-Host "type a ip-addresss (to stop type 'exit')"
     if ($hostname -eq 'exit') {
-        $contiue = $false
+        $continue = $false
     }  else {
         $hostnames += $hostname
     }
