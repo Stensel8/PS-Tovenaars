@@ -55,7 +55,7 @@ function Get-Password {
         [string]$defaultPwd = ''
     )
     do {
-        Write-Host $promt -ForegroundColor Cyan
+        Write-Host $prompt -ForegroundColor Cyan
         $password = Read-Host -MaskInput
         if (($password.Length -eq 0) -and ($defaultPwd.Length -gt 0)) {
             $password = $defaultPwd
