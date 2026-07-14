@@ -1,44 +1,28 @@
+Clear-Host
 
+$klantmachines = (Get-Content -Path ".\Klantmachines.json" | ConvertFrom-Json).Klantmachine
 
-#T3-a
-$json = Get-Content -Raw -Path 'Klantmachines.json'
-$klantmachines = ($json | ConvertFrom-Json).klantmachine
-$klantmachines | ConvertTo-Html -Property computernaam, ip -Title "Klantmachines" | Out-File -FilePath "Klantmachines.html"
+$klantmachines | ConvertTo-Html | Out-File -FilePath ".\klantmachines.html"
 
-#T3-b
-function Test-Log ([String] $zoekwoord) {
-    $filename = "SystemUpdate.log"
-    $log = Get-Content -Path $filename
-    #$zoekwoord = Read-Host -Prompt "Zoekwoord"
-    $count=0
-    $linecount=1
-    foreach ($line in $log) {
-        $linecount = $linecount + 1
-        Write-Host $linecount
+function Test-Log {
+    $zoekwoord = Read-Host -Prompt "Geef een zoekwoord op"
+    $file = Get-Content -path ".\SystemUpdate.log"
+    $count = 0
+
+    foreach ($line in $file) {
         if ($line -match $zoekwoord) {
-            write-host "match"
-            $count = $count + 1
-        } else {
-            write-host "skip"
+            $count++
         }
     }
-    $output = "x" 
-    Write-Host "Het zoekwoord $zoekwoord komt $count$output voor."
+    Write-Host "Het zoekwoord $zoekwoord komt ${count}x voor."
 }
-$heartbeat=Test-Log("Heartbeat")
-$heartbeat
+Test-Log
 
-#T3-c
-#Enable-PSRemoting
-
-# Get Credentials
-$Cred = Get-Credential
-
-# Set up session option needed to
 $sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
-# Create a session
-$hostname = "powershell-scripting.westeurope.cloudapp.azure.com"
-$session = New-PSSession -ComputerName $hostname -Credential $Cred -UseSSL -SessionOption $sessionOption
 
+$session = New-PSSession -ComputerName powershell-sten.westeurope.cloudapp.azure.com -Credential (Get-Credential) -UseSSL -SessionOption $sessionOption
 
-$serverName = Invoke-Command -Session $session -ScriptBlock { $env:COMPUTERNAME }
+Invoke-Command -Session $session -ScriptBlock {
+    $ENV:USERNAME
+    $ENV:COMPUTERNAME
+}
