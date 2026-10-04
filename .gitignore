@@ -1,0 +1,10 @@
+# Bestanden die de opdrachten zelf aanmaken (opnieuw te genereren, dus niet committen)
+Oefenen/Week 2/Processes.html
+Oefenen/Week 4/Apache_2k.log
+Oefenen/Week 4/students.xml
+Oefenen/Week 8/T1.result
+Oefenen/Week 8/Klantmachines.html
+
+# Opgeslagen inloggegevens (opdracht 4-4). Die horen nooit in git, ook al zijn ze versleuteld.
+cred.xml
+*.cred.xml

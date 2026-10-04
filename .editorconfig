@@ -1,0 +1,27 @@
+# Zorgt dat iedere editor (VS Code, Visual Studio, ...) dezelfde basisregels gebruikt.
+# Zo komen de meldingen over trailing whitespace van PSScriptAnalyzer niet steeds terug.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{ps1,psm1,psd1}]
+indent_style = space
+indent_size = 4
+
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+[*.md]
+# In Markdown betekenen 2 spaties aan het eind van een regel een regeleinde
+trim_trailing_whitespace = false
+
+# Databestanden van school en testuitvoer laten we ongemoeid
+[*.{log,result,csv,txt}]
+trim_trailing_whitespace = false
+insert_final_newline = unset
+end_of_line = unset
