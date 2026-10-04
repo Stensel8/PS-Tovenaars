@@ -49,6 +49,7 @@ $sessionOption = New-PSSession -ComputerName $hostname -Credential $cred -UseSSL
 $session
 
 $serverName = Invoke-Command -Session $session -ScriptBlock { [System.Environment]::MachineName } # DevSkim: ignore DS104456
+Write-Host "Verbonden met server: $serverName"
 
 
 #PSSessions kun je enteren met Enter-PSSession

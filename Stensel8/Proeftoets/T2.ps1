@@ -28,3 +28,6 @@ function Test-Verb {
 
 $computerName = $ENV:COMPUTERNAME
 $BIOSSerialNumber = (Get-CimInstance Win32_BIOS).SerialNumber
+
+Write-Host "Aantal commando's: $($commands.Count), aantal toegestane werkwoorden: $($verbs.Count)"
+Write-Host "Computernaam: $computerName, BIOS serienummer: $BIOSSerialNumber"

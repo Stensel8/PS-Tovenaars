@@ -16,3 +16,8 @@ $5986 =  Test-NetConnection -ComputerName localhost -Port 5986 -InformationLevel
 $services = Get-Service | Where-Object { $_.Status -eq 'Running' -and $_.Name -notin @('McpManagementService', 'dcsvc') }
 $started = $services.Count
 
+
+Write-Host "Poort 5985 open: $5985"
+Write-Host "Poort 5986 open: $5986"
+Write-Host "Aantal gestarte services: $started"
+Write-Host "PSModulePath: $modulepath"
