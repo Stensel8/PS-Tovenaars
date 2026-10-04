@@ -23,7 +23,7 @@ function Test-Log {
 
     try {
         if (-not (Test-Path "SystemUpdate.log")) {
-            Write-
+            Write-Warning "SystemUpdate.log bestaat niet, er kan niet gezocht worden naar '$zoekwoord'."
         }
     }
     catch {
