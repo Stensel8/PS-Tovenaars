@@ -29,7 +29,9 @@ De scripts zijn samengesteld uit de officiële uitwerkingen, de slides en het we
 * Geen wachtwoorden in een script: gebruik `Get-Credential`, `Read-Host -AsSecureString` of `Export-Clixml`.
 * Scripts die iets op je computer veranderen (registry, installeren, execution policy) vragen eerst om bevestiging
   of zetten de oude waarde terug.
-* Alleen ASCII-tekens in de scripts, zonder trailing whitespace (zie `.editorconfig`).
+* In de scripts van `Oefenen/` staan alleen ASCII-tekens (dus "geimporteerd" in plaats van met trema), zodat
+  PowerShell 5.1 en 7 ze zonder BOM hetzelfde lezen. De bestanden zelf zijn UTF-8 en zonder trailing whitespace
+  (zie `.editorconfig`). In oudere bestanden, zoals die in `Stensel8/`, kunnen wel andere tekens staan.
 
 ## Week 1: Verkennen PowerShell
 

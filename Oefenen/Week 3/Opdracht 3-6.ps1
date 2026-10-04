@@ -3,6 +3,13 @@
 # Voer dit script uit op een server met Active Directory (bijvoorbeeld de domain controller van de casus)
 # of op een computer waar RSAT (de module ActiveDirectory) is geinstalleerd.
 # (PowerUp) : Laat per domeincomputer zien hoeveel schijfruimte de C-schijf gebruikt
+# Gebruik: & ".\Opdracht 3-6.ps1" -SearchBase "OU=Workstations,DC=scripting,DC=local"
+#          Zonder -SearchBase zoeken we in het hele domein.
+
+# De OU waarin gezocht wordt kun je als parameter meegeven
+param (
+    [string]$SearchBase
+)
 
 # Het scherm leegmaken
 Clear-Host
@@ -14,14 +21,17 @@ if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
 }
 Import-Module -Name ActiveDirectory
 
-# 2. De OU waaruit we de computers ophalen. Pas dit aan naar jouw OU.
-# De juiste waarde vind je in de property DistinguishedName, bijvoorbeeld:
-# CN=DC01,OU=Domain Controllers,DC=scripting,DC=local
-$searchBase = "OU=Domain Controllers,DC=scripting,DC=local"
+# 2. Waar zoeken we? Zonder parameter in het hele domein, zodat ook werkstations en member servers meekomen.
+# Een eigen OU geef je mee met -SearchBase. De juiste waarde vind je in de property DistinguishedName van een
+# computer, bijvoorbeeld CN=DC01,OU=Domain Controllers,DC=scripting,DC=local geeft de OU
+# OU=Domain Controllers,DC=scripting,DC=local
 
 # 3. Vraag de domeincomputers op en zet ze in een variabele, met foutafhandeling
 try {
-    $domeincomputers = Get-ADComputer -Filter * -SearchBase $searchBase -Properties IPv4Address, LastLogonDate -ErrorAction Stop
+    if ([string]::IsNullOrWhiteSpace($SearchBase)) {
+        $SearchBase = (Get-ADDomain -ErrorAction Stop).DistinguishedName
+    }
+    $domeincomputers = Get-ADComputer -Filter * -SearchBase $SearchBase -Properties IPv4Address, LastLogonDate -ErrorAction Stop
 }
 catch {
     Write-Error "Fout bij het ophalen van de domeincomputers: $($_.Exception.Message)"

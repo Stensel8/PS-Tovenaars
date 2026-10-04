@@ -26,7 +26,12 @@ try {
     Invoke-WebRequest -Uri $url -OutFile $installatieBestand -ErrorAction Stop
 
     # 4. De installatie starten. -Wait zorgt dat het script wacht totdat de installatie klaar is.
-    Start-Process -FilePath $installatieBestand -ArgumentList "/silent", "/install" -Wait
+    # Start-Process geeft zelf geen fout als de installer mislukt, daarom houden we het proces vast (-PassThru)
+    # en controleren we de exitcode. 0 betekent dat het gelukt is.
+    $installatieProces = Start-Process -FilePath $installatieBestand -ArgumentList "/silent", "/install" -Wait -PassThru
+    if ($installatieProces.ExitCode -ne 0) {
+        throw "De installer stopte met exitcode $($installatieProces.ExitCode)."
+    }
 
     Write-Host "De installatie is voltooid."
 }

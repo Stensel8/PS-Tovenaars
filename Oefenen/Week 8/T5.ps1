@@ -30,7 +30,10 @@ Test-Log -SearchText "Heartbeat" -FileName ".\SystemUpdate.log"
 #>
 function Test-Log {
     [CmdletBinding()]
-    [OutputType([System.Collections.ArrayList])]
+    # return $output geeft de records een voor een door de pipeline (PowerShell "unrolt" de ArrayList), dus de uitvoer
+    # bestaat uit PSCustomObject. Wil je 1 ArrayList, gebruik dan return ,$output (maar dan werkt Select-Object -First niet meer).
+    [OutputType([PSCustomObject])]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseOutputTypeCorrectly", "", Justification = "PSScriptAnalyzer ziet de ArrayList, maar PowerShell geeft de losse PSCustomObjects door")]
     param (
         [Parameter(Mandatory)]
         [ValidateLength(3, [int]::MaxValue)]
