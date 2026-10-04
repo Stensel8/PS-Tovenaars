@@ -17,6 +17,7 @@ Write-Host "De ontbrekende Az-commando's: $($azcommands -join ', ')"
 
 # Let op: -SkipCACheck en -SkipCNCheck zet de controle van het servercertificaat uit. De proeftoets eist dat, omdat
 # de toetsserver een zelf-gesigneerd certificaat heeft. Gebruik dit NOOIT voor een echte server (onderschepping van inloggegevens).
+$sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
 $server = "powershell-sten.westeurope.cloudapp.azure.com"
 $session = New-PSSession -ComputerName $server -Credential (Get-Credential) -UseSSL -SessionOption $sessionOption
 
