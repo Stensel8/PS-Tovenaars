@@ -20,9 +20,10 @@ Test-Log
 
 $sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
 
-$session = New-PSSession -ComputerName powershell-sten.westeurope.cloudapp.azure.com -Credential (Get-Credential) -UseSSL -SessionOption $sessionOption
+$server = "powershell-sten.westeurope.cloudapp.azure.com"
+$session = New-PSSession -ComputerName $server -Credential (Get-Credential) -UseSSL -SessionOption $sessionOption
 
-Invoke-Command -Session $session -ScriptBlock {
-    $ENV:USERNAME
-    $ENV:COMPUTERNAME
+Invoke-Command -Session $session -ScriptBlock { # DevSkim: ignore DS104456
+    [System.Environment]::UserName
+    [System.Environment]::MachineName
 }

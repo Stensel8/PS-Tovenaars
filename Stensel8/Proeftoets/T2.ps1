@@ -23,7 +23,7 @@ function Test-Verb {
 
     }
     return "Nee, sorry."
-    
+
 }
 
 $computerName = $ENV:COMPUTERNAME

@@ -14,7 +14,8 @@ $myHeaders = ($myFile).headers
 $azcommands = @('Connect-AzAccount', 'Set-AzContext', 'New-AzResourceGroup')
 
 $sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
-$session = New-PSSession -ComputerName powershell-sten.westeurope.cloudapp.azure.com -Credential (Get-Credential) -UseSSL -SessionOption $sessionOption
+$server = "powershell-sten.westeurope.cloudapp.azure.com"
+$session = New-PSSession -ComputerName $server -Credential (Get-Credential) -UseSSL -SessionOption $sessionOption
 
 
 $studentnummer = 550600
@@ -22,7 +23,7 @@ $studentnaam = "Sten Tijhuis"
 $BIOSSerialNumber = (Get-CimInstance -ClassName WIN32_BIOS).SerialNumber
 $computerName = $ENV:COMPUTERNAME
 
-Invoke-Command -Session $session -ScriptBlock {
+Invoke-Command -Session $session -ScriptBlock { # DevSkim: ignore DS104456
     Invoke-Sqlcmd `
     -ServerInstance '.\SQLEXPRESS' `
     -Database 'ScriptingDB' `

@@ -17,6 +17,6 @@ function Get-Square {
         Write-Error "Er ging iets fout bij het kwadraten..."
     }
     finally {
-        Write-Output "Kwadraat is $Result" 
+        Write-Output "Kwadraat is $Result"
     }
 }

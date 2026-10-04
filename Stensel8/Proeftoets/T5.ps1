@@ -2,6 +2,7 @@ Clear-Host
 
 function Test-Log {
     [CmdletBinding()]
+    [OutputType([System.Collections.ArrayList])]
     param (
     [parameter()]
     [string]
@@ -12,13 +13,13 @@ function Test-Log {
     [ValidateLength(8,100)]
     $fileName
     )
-    
+
     begin {
         $Output = New-Object -TypeName System.Collections.ArrayList
         $file = Get-Content $fileName
         $count = 0
     }
-    
+
     process {
         foreach ($line in $file) {
             $count++
@@ -38,6 +39,7 @@ function Test-Log {
 
 function Test-Log {
     [CmdletBinding()]
+    [OutputType([System.Collections.ArrayList])]
     param (
         [parameter()]
         [string]
@@ -48,13 +50,13 @@ function Test-Log {
         [ValidateLength(8,100)]
         $fileName
     )
-    
+
     begin {
         $output = New-Object -TypeName System.Collections.ArrayList
         $file = Get-Content $fileName
         $count = 0
     }
-    
+
     process {
         foreach ($line in $file) {
             $count++
@@ -67,7 +69,7 @@ function Test-Log {
             }
         }
     }
-    
+
     end {
         return $output
     }
@@ -75,6 +77,7 @@ function Test-Log {
 
 function Test-Log {
     [CmdletBinding()]
+    [OutputType([System.Collections.ArrayList])]
     param (
         [parameter()]
         [string]
@@ -85,7 +88,7 @@ function Test-Log {
         [ValidateLength(8,100)]
         $filename
     )
-    
+
     begin {
         $output = New-Object System.Collections.ArrayList
         $file = Get-Content $filename
@@ -103,7 +106,7 @@ function Test-Log {
             }
         }
     }
-    
+
     end {
         return $output
     }

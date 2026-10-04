@@ -6,9 +6,9 @@ If (-not $isAdmin) {
     Write-Host "-- Restarting as Administrator" -ForegroundColor Cyan ; Start-Sleep -Seconds 1
 
     if($PSVersionTable.PSEdition -eq "Core") {
-        Start-Process pwsh.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        Start-Process pwsh.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     }
 
     exit
@@ -16,20 +16,25 @@ If (-not $isAdmin) {
 #endregion
 
 # Install Powershell 7, latest version
-Invoke-Expression "& { $(Invoke-RestMethod 'https://aka.ms/install-powershell.ps1') } -UseMSI -Quiet"
+# Download the install script to a temporary file and run that, instead of using Invoke-Expression on downloaded text
+$installScript = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath "install-powershell.ps1"
+Invoke-RestMethod -Uri 'https://aka.ms/install-powershell.ps1' -OutFile $installScript
+& $installScript -UseMSI -Quiet
+Remove-Item -Path $installScript
 
 # Choose new computer name
 # Helper function to check whether a computer name is valid. Used when asking for a new computer name
 function Assert-ValidComputerName {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter", "computerName", Justification = "Used inside the dot-sourced script block below")]
     param (
         [String] $computerName
     )
 
     # Check length: minimum 2, maximum 14
     . {$valid = ($computerName.Length -ge 2) -and ($computerName.Length -le 14)
-    # check for invalid characters using regular expressions. 
+    # check for invalid characters using regular expressions.
     # Valid characters are: first and last character alphanumeric, characters in between alphanumeric or '-'
-    $valid = $valid -and ($computerName -match "^[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]$") 
+    $valid = $valid -and ($computerName -match "^[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]$")
     } | Out-Null
     return $valid
 }
@@ -38,13 +43,13 @@ function Assert-ValidComputerName {
 $defaultComputerName = "SXN-WS-01"
 do {
     $newComputerName = Read-Host -Prompt "Enter the new name for this computer (default is $defaultComputerName): "
-    if ($newComputerName -eq '') { $newComputerName=$defaultComputerName }    
+    if ($newComputerName -eq '') { $newComputerName=$defaultComputerName }
     $result = Assert-ValidComputerName -computerName $newComputerName
     if (!$result) {
         Write-Host "Invalid computer name"
     }
 }
-while (!$result) 
+while (!$result)
 # Inform the user about the impending reboot and ask for permission
 Write-Host "The computer will be renamed to '$newComputerName' and will need to reboot. Do you want to continue? (Y/N)" -ForegroundColor Yellow
 $confirmation = Read-Host
@@ -59,7 +64,7 @@ if ($confirmation -match '^[Yy]') {
 }
 
 # Install Active Directory management tools, needed to detect running Active Directory domains
-Add-WindowsCapability -Online -Name RSAT.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0 
+Add-WindowsCapability -Online -Name RSAT.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
 
 # Import module ActiveDirectory
 Import-Module -Name ActiveDirectory

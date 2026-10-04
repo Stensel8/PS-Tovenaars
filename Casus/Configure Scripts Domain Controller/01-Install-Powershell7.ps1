@@ -9,9 +9,9 @@ If (-not $isAdmin) {
     Write-Host "-- Restarting as Administrator" -ForegroundColor Cyan ; Start-Sleep -Seconds 1
 
     if($PSVersionTable.PSEdition -eq "Core") {
-        Start-Process pwsh.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        Start-Process pwsh.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     }
 
     exit
@@ -29,7 +29,7 @@ $natIPConfiguration = Get-NetIPConfiguration -Detailed | Where-Object {
 }
 # Get IP configuration of network adapter without IPv4 default gateway - this will be the LAN interface, using a Host-Only virtual network
 $lanIPConfiguration = Get-NetIPConfiguration -Detailed | Where-Object {
-    ($null -eq $_.IPv4DefaultGateway) 
+    ($null -eq $_.IPv4DefaultGateway)
 }
 
 #region Check NAT network
@@ -76,7 +76,7 @@ switch ($lanIPConfiguration.Count) {
         if ("Enabled" -eq $lanIPConfiguration.NetIPv4Interface.DHCP) {
             # DHCP enabled, now check for APIPA address
             # If no APIPA address, IP address is provided by DHCP, which is wrong.
-            if (!$lanIPConfiguration.IPv4Address.IPAddress.StartsWith("169.254")) { 
+            if (!$lanIPConfiguration.IPv4Address.IPAddress.StartsWith("169.254")) {
                 #not an APIPA address, so have the user correct this
                 Write-Information "Host-only network is DHCP enabled, which will interfere with the setup."
                 Write-Information "Disable DHCP on the host only network in the virtual network editor."
@@ -103,7 +103,11 @@ switch ($lanIPConfiguration.Count) {
 # This is an example of invoking a REST API - more on that later in this course.
 # Download and installation are called before setting up the network interfaces, since that setup takes place asynchronously
 # Starting Invoke-RestMethod while the network setup hasn't been completed will not work.
-Invoke-Expression "& { $(Invoke-RestMethod 'https://aka.ms/install-powershell.ps1') } -UseMSI -Quiet"
+# Download the install script to a temporary file and run that, instead of using Invoke-Expression on downloaded text
+$installScript = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath "install-powershell.ps1"
+Invoke-RestMethod -Uri 'https://aka.ms/install-powershell.ps1' -OutFile $installScript
+& $installScript -UseMSI -Quiet
+Remove-Item -Path $installScript
 
 #endregion
 
@@ -136,7 +140,7 @@ if (!$DNSServerArray.contains("8.8.4.4")) {
 Rename-NetAdapter -Name $natIPConfiguration.InterfaceAlias -NewName "Internet"
 # set IP address
 New-NetIPAddress  -InterfaceAlias "Internet" -AddressFamily IPv4 -IPAddress $newIPAddress -DefaultGateway $gateway -PrefixLength $prefixLength
-# set DNS server addresses. 
+# set DNS server addresses.
 Set-DnsClientServerAddress -InterfaceAlias "Internet" -ServerAddresses $DNSServerArray
 #endregion Set up Internet network interface
 
@@ -164,15 +168,16 @@ Set-DnsClientServerAddress -InterfaceAlias "Internet" -ServerAddresses $DNSServe
 
 # Helper function to check whether a computer name is valid. Used when asking for a new computer name
 function Assert-ValidComputerName {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter", "computerName", Justification = "Used inside the dot-sourced script block below")]
     param (
         [String] $computerName
     )
 
     # Check length: minimum 2, maximum 14
     . {$valid = ($computerName.Length -ge 2) -and ($computerName.Length -le 14)
-    # check for invalid characters using regular expressions. 
+    # check for invalid characters using regular expressions.
     # Valid characters are: first and last character alphanumeric, characters in between alphanumeric or '-'
-    $valid = $valid -and ($computerName -match "^[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]$") 
+    $valid = $valid -and ($computerName -match "^[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]$")
     } | Out-Null
     return $valid
 }
@@ -181,10 +186,10 @@ function Assert-ValidComputerName {
 $defaultComputerName = "SXN-DC-01"
 do {
     $newComputerName = Read-Host -Prompt "Enter the new name for this computer (default is $defaultComputerName): "
-    if ($newComputerName -eq '') { $newComputerName=$defaultComputerName }    
+    if ($newComputerName -eq '') { $newComputerName=$defaultComputerName }
     $result = Assert-ValidComputerName -computerName $newComputerName
 }
-while (!$result) 
+while (!$result)
 
 # Rename and reboot the local computer.  After reboot, Powershell 7 is available by running "pwsh" from the command prompt,
 Rename-Computer -NewName $newComputerName -Restart

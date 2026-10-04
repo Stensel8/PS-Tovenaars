@@ -14,5 +14,5 @@ function Get-WebContent {
         $filename
     )
     $request = "stentijhuis.nl/$filename"
-    
+
 }

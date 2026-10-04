@@ -21,14 +21,15 @@ $modulepath = $env:PSModulePath
 
 # c) Controleer of de poorten 5985 en 5986 openstaan en zet "Ja" of "Nee" in $5985 en $5986.
 # Met -Quiet geeft Test-Connection alleen $true of $false terug.
-if (Test-Connection -TargetName localhost -TcpPort 5985 -Count 1 -Quiet) {
+# (localhost is hier bedoeld: we controleren de poorten van de eigen computer, het is geen testcode)
+if (Test-Connection -TargetName localhost -TcpPort 5985 -Count 1 -Quiet) { # DevSkim: ignore DS162092
     $5985 = "Ja"
 }
 else {
     $5985 = "Nee"
 }
 
-if (Test-Connection -TargetName localhost -TcpPort 5986 -Count 1 -Quiet) {
+if (Test-Connection -TargetName localhost -TcpPort 5986 -Count 1 -Quiet) { # DevSkim: ignore DS162092
     $5986 = "Ja"
 }
 else {

@@ -11,7 +11,7 @@ Add-DhcpServerInDc -DnsName $DomainControllerName
 
 # Retrieve IP address of LAN network interface
 $lanIPConfiguration = Get-NetIPConfiguration -Detailed | Where-Object {
-    ($null -eq $_.IPv4DefaultGateway) 
+    ($null -eq $_.IPv4DefaultGateway)
 }
 # Extract server IP address and subnet mask
 $DHCPServerIP = $lanIPConfiguration.IPv4Address.IPAddress
@@ -19,7 +19,7 @@ $DHCPServerIP = $lanIPConfiguration.IPv4Address.IPAddress
 $prefixLength = $lanIPConfiguration.IPv4Address.prefixLength
 # Create subnet mask in dotted decimal notation. That feature does not exist in Powershell, we'll have to write our own functionality for this.
 # Convert the prefix length into a 32 bit integer, starting with <prefixLength> 1s and filled out with (32-<prefixLenghts) 0s
-$subnetMaskNumber = [UInt32](([Math]::Pow(2,$prefixLength)-1) * [Math]::Pow(2,32-$prefixLength)) 
+$subnetMaskNumber = [UInt32](([Math]::Pow(2,$prefixLength)-1) * [Math]::Pow(2,32-$prefixLength))
 # Split this number into 4 bytes:
 $octets=[System.BitConverter]::GetBytes($subnetMaskNumber)
 # Reverse the orde, needed on Intel based CPUs.

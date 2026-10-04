@@ -48,8 +48,9 @@ $sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
 
 try {
     $session = New-PSSession -ComputerName $server -Credential $cred -UseSSL -SessionOption $sessionOption -ErrorAction Stop
-    # In het scriptblock vragen we de naam van de server zelf op (MachineName is hetzelfde als $env:COMPUTERNAME)
-    $serverName = Invoke-Command -Session $session -ScriptBlock { [System.Environment]::MachineName }
+    # In het scriptblock vragen we de naam van de server zelf op (MachineName is hetzelfde als $env:COMPUTERNAME).
+    # Invoke-Command is hier bedoeld: de opdracht is het remote uitvoeren (DevSkim: remoting is het onderwerp)
+    $serverName = Invoke-Command -Session $session -ScriptBlock { [System.Environment]::MachineName } # DevSkim: ignore DS104456
     Write-Host "Verbonden met de server: $serverName"
 }
 catch {

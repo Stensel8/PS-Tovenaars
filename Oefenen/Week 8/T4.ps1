@@ -14,7 +14,8 @@ function Get-WebContent {
         [string]$filename
     )
 
-    return Invoke-WebRequest -Uri "http://$server/$filename"
+    # De proeftoets haalt het bestand op via http, zoals in de opdracht (zonder scheme gebruikt PowerShell ook http)
+    return Invoke-WebRequest -Uri "http://$server/$filename" # DevSkim: ignore DS137138
 }
 
 try {
@@ -61,7 +62,8 @@ try {
 
     # Voer op de server (instance '.' = de lokale database server) de INSERT query uit op de database ScriptingDB.
     # Met $using: geef je de variabelen van je eigen computer mee naar de server.
-    Invoke-Command -Session $session -ScriptBlock {
+    # Invoke-Command is hier bedoeld: de opdracht is het remote uitvoeren (DevSkim: remoting is het onderwerp)
+    Invoke-Command -Session $session -ScriptBlock { # DevSkim: ignore DS104456
         Invoke-Sqlcmd -ServerInstance "." -Database "ScriptingDB" -Query "
             INSERT INTO tblWorkstationUsed(
                 StudentNr,

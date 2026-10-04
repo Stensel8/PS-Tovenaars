@@ -3,6 +3,9 @@ $InformationPreference="Continue"
 # Helper functions to check complexity rules for SA password
 # Function to validate password complexity
 function Assert-ValidPassword {
+    # The setup program needs the SA password as plain text on its command line, so this helper checks a plain string.
+    # The string only lives in memory and comes from a masked Read-Host.
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingPlainTextForPassword", "password", Justification = "Setup needs the plain text SA password")]
     param (
         [string]$password
     )
@@ -17,31 +20,31 @@ function Assert-ValidPassword {
 
     # Check password length
     if ($password.Length -lt $minimumLength) {
-        Write-Information "Password must be at least $minimumLength characters long." -ForegroundColor Red
+        Write-Host "Password must be at least $minimumLength characters long." -ForegroundColor Red
         return $false
     }
 
     # Check lowercase requirement
     if ($requiresLowercase -and !($password -cmatch "[a-z]")) {
-        Write-Information "Password must contain at least one lowercase letter." -ForegroundColor Red
+        Write-Host "Password must contain at least one lowercase letter." -ForegroundColor Red
         return $false
     }
 
     # Check uppercase requirement
     if ($requiresUppercase -and !($password -cmatch "[A-Z]")) {
-        Write-Information "Password must contain at least one uppercase letter." -ForegroundColor Red
+        Write-Host "Password must contain at least one uppercase letter." -ForegroundColor Red
         return $false
     }
 
     # Check digit requirement
     if ($requiresDigit -and !($password -cmatch "\d")) {
-        Write-Information "Password must contain at least one digit." -ForegroundColor Red
+        Write-Host "Password must contain at least one digit." -ForegroundColor Red
         return $false
     }
 
     # Check special character requirement
     if ($requiresSpecialChar -and !($password -cmatch "[$specialChars]")) {
-        Write-Information "Password must contain at least one special character ($specialChars)." -ForegroundColor Red
+        Write-Host "Password must contain at least one special character ($specialChars)." -ForegroundColor Red
         return $false
     }
 
@@ -61,7 +64,7 @@ function Get-Password {
             $password = $defaultPwd
         }
     } while (-not (Assert-ValidPassword -password $password))
-    
+
     return $password
 }
 
@@ -96,9 +99,9 @@ If (-not $isAdmin) {
     Write-Host "-- Restarting as Administrator" -ForegroundColor Cyan ; Start-Sleep -Seconds 1
 
     if($PSVersionTable.PSEdition -eq "Core") {
-        Start-Process pwsh.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        Start-Process pwsh.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs 
+        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     }
 
     exit
@@ -130,8 +133,7 @@ $instancename = "MSSQLSERVER"
 $features = @('SQLEngine')      # only install SQL Server database engine, no extras
 
 # Build the command parameter list. The technique is called "splatting"
-$cmd = @(
-    "$setupPath "   # Path to setup command
+$setupArguments = @(
     '/QUIET'                            # Silent install
     '/INDICATEPROGRESS'                 # Show progress on command line
     '/IACCEPTSQLSERVERLICENSETERMS'     # Must be included in unattended installs
@@ -141,10 +143,10 @@ $cmd = @(
     "/INSTANCENAME=$instancename"
     "/SAPWD=$password"
     "/SECURITYMODE=SQL"                 # You can log in as an SQL system administrator using a Windows administrator account, or as the SQL account sa
-    
+
 )
 
-Invoke-Expression "$cmd"
+& $setupPath @setupArguments
 if ($LastExitCode) {
     if ($LastExitCode -ne 3010) { throw "SqlServer installation failed, exit code: $LastExitCode" }
     Write-Warning "SYSTEM REBOOT IS REQUIRED"

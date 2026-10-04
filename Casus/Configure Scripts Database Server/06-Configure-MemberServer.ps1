@@ -1,5 +1,9 @@
 # Install Powershell 7, latest version
-Invoke-Expression "& { $(Invoke-RestMethod 'https://aka.ms/install-powershell.ps1') } -UseMSI -Quiet"
+# Download the install script to a temporary file and run that, instead of using Invoke-Expression on downloaded text
+$installScript = Join-Path -Path ([System.IO.Path]::GetTempPath()) -ChildPath "install-powershell.ps1"
+Invoke-RestMethod -Uri 'https://aka.ms/install-powershell.ps1' -OutFile $installScript
+& $installScript -UseMSI -Quiet
+Remove-Item -Path $installScript
 
 # Convert DHCP address to static IP address
 # Get current network configuration
@@ -35,20 +39,21 @@ $DNSServerArray=(Get-DnsClientServerAddress -InterfaceIndex $IPConfiguration.Int
 Rename-NetAdapter -Name $IPConfiguration.InterfaceAlias -NewName "LAN"
 # set IP address
 New-NetIPAddress  -InterfaceAlias "LAN" -AddressFamily IPv4 -IPAddress $newIPAddress -DefaultGateway $gateway -PrefixLength $prefixLength
-# set DNS server addresses. 
+# set DNS server addresses.
 Set-DnsClientServerAddress -InterfaceAlias "LAN" -ServerAddresses $DNSServerArray
 
 # Helper function to check whether a computer name is valid. Used when asking for a new computer name
 function Assert-ValidComputerName {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSReviewUnusedParameter", "computerName", Justification = "Used inside the dot-sourced script block below")]
     param (
         [String] $computerName
     )
 
     # Check length: minimum 2, maximum 14
     . {$valid = ($computerName.Length -ge 2) -and ($computerName.Length -le 14)
-    # check for invalid characters using regular expressions. 
+    # check for invalid characters using regular expressions.
     # Valid characters are: first and last character alphanumeric, characters in between alphanumeric or '-'
-    $valid = $valid -and ($computerName -match "^[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]$") 
+    $valid = $valid -and ($computerName -match "^[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]$")
     } | Out-Null
     return $valid
 }
@@ -56,10 +61,10 @@ function Assert-ValidComputerName {
 $defaultComputerName = "SXN-DB-01"
 do {
     $newComputerName = Read-Host -Prompt "Enter the new name for this computer (default is $defaultComputerName)"
-    if ($newComputerName -eq '') { $newComputerName=$defaultComputerName }    
+    if ($newComputerName -eq '') { $newComputerName=$defaultComputerName }
     $result = Assert-ValidComputerName -computerName $newComputerName
 }
-while (!$result) 
+while (!$result)
 
 $domainName='scripting.local' #No elegant way to discover domain, unlike in Windows 11
 

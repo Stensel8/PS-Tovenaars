@@ -1,4 +1,4 @@
-# 1. Laat alle file system-diensten zien en filter op ‘Provider’ FileSystem.
+﻿# 1. Laat alle file system-diensten zien en filter op ‘Provider’ FileSystem.
 Get-PSDrive | Where-Object Provider -eq 'FileSystem'
 
 # 2. Ga vervolgens naar de gewenste PSdrive (bijv. C:)
@@ -13,7 +13,7 @@ Set-Location C:
 # 5. Maak een test .mp4 bestand aan in de huidige folder.
 "TEST" > test.mp4
 
-# 6. Haal met Get-ChildItem alle objecten (ook in sub-directories) op, 
+# 6. Haal met Get-ChildItem alle objecten (ook in sub-directories) op,
 # en filter met Where-Object op bestanden met de extensie '.mp4'.
 $files = Get-ChildItem -Recurse | Where-Object Extension -eq '.mp4'
 

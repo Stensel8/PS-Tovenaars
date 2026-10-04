@@ -6,7 +6,7 @@ while ($true) {
     #ask for hostname
     $hostname = Read-Host -Prompt "Voeg een hostname toe (of 'exit' om te stoppen)"
     Write-Host "De ingevoerde hostname is: $hostname"
-    
+
     #check if hostname is empty
     if ($hostname -eq "") {
         Write-Host "Geen hostname ingevoerd, probeer het opnieuw."

@@ -1,4 +1,4 @@
-# Opdracht 3-4 : Try-catch met typed exceptions gebruiken
+﻿# Opdracht 3-4 : Try-catch met typed exceptions gebruiken
 # Moeilijkheid: Filled Filled Outlined
 # Schrijf een Powershell script dat het volgende doet:
 
@@ -50,7 +50,7 @@ while ($continue) {
 
         # Geef het aantal geïmporteerde regels weer
         Write-Host "Het aantal geïmporteerde regels is: $($data.Count)"
-        
+
         # Geef de inhoud van het CSV-bestand weer als een lijst
         $data | Format-List
 

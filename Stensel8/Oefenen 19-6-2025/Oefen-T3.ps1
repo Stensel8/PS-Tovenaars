@@ -27,9 +27,9 @@ function Test-Log {
         }
     }
     catch {
-        <#Do this if a terminating exception happens#>
+        Write-Warning "Er ging iets mis: $($_.Exception.Message)"
     }
-    
+
 }
 
 
@@ -41,14 +41,14 @@ function Test-Log {
 
 
 #C
-$hostname = localhost
+$hostname = "localhost" # DevSkim: ignore DS162092
 
 $cred = Get-Credential
 
 $sessionOption = New-PSSession -ComputerName $hostname -Credential $cred -UseSSL -SessionOption $sessionOption
 $session
 
-$serverName = Invoke-Command -Session $session -ScriptBlock { $env:COMPUTERNAME }
+$serverName = Invoke-Command -Session $session -ScriptBlock { [System.Environment]::MachineName } # DevSkim: ignore DS104456
 
 
 #PSSessions kun je enteren met Enter-PSSession

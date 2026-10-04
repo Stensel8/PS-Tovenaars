@@ -10,8 +10,8 @@ Write-Host $studentnummer -ForegroundColor Green
 
 $modulepath = $env:PSModulePath
 
-$5985 =  Test-NetConnection -ComputerName localhost -Port 5985 -InformationLevel Quiet
-$5986 =  Test-NetConnection -ComputerName localhost -Port 5986 -InformationLevel Quiet
+$5985 =  Test-NetConnection -ComputerName localhost -Port 5985 -InformationLevel Quiet # DevSkim: ignore DS162092
+$5986 =  Test-NetConnection -ComputerName localhost -Port 5986 -InformationLevel Quiet # DevSkim: ignore DS162092
 
 $services = Get-Service | Where-Object { $_.Status -eq 'Running' -and $_.Name -notin @('McpManagementService', 'dcsvc') }
 $started = $services.Count

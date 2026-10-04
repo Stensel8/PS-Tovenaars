@@ -1,4 +1,4 @@
-install-moodule -name az -repository PSGallery -Force
+Install-Module -Name az -repository PSGallery -Force
 
 Get-Module -listavailable -name az*
 
@@ -16,11 +16,11 @@ Get-azresource | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMac
 $vms = get-azvm
 
 foreach ($vm in $vms) {
-    $vm 
+    $vm
 }
 
-$VMLocalAdminSecurePassword = ConvertTo-SecureString -String "P@ssw0rd" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($VMLocalAdminSecurePassword)
+# Vraag de inloggegevens op, zet het wachtwoord niet in het script
+$credential = Get-Credential -Message "Kies een gebruikersnaam en wachtwoord voor de VM"
 
 
 

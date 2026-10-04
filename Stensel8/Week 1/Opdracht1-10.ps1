@@ -1,4 +1,4 @@
-# 1.4-Scripting-met-Powershell
+﻿# 1.4-Scripting-met-Powershell
 # Opdracht 1-10 : Schrijf een script, waarbij je gebruik maakt van een functie, om een geheim random getal te raden (Hoger-Lager).
 # Maak een variabele $secret voor het geheime wachtwoord en een hulp-variabele $notguessed met als standaardwaarde $True.
 
@@ -23,7 +23,32 @@
 # Je hebt het getal geraden!
 
 
+$secret = Get-Random -Minimum 0 -Maximum 101
+$notguessed = $true
+
 function Test-Number {
-    [OutputType([Boolean])]}
-    param (int16)
-    
+    [OutputType([Boolean])]
+    param (
+        [int16]$Number
+    )
+
+    if ($Number -lt $secret) {
+        Write-Host "Hoger"
+        $false
+    }
+    elseif ($Number -gt $secret) {
+        Write-Host "Lager"
+        $false
+    }
+    else {
+        $true
+    }
+}
+
+while ($notguessed) {
+    $guess = Read-Host -Prompt "Raad het getal?"
+    if (Test-Number -Number $guess) {
+        Write-Host "Je hebt het getal geraden!"
+        $notguessed = $false
+    }
+}
