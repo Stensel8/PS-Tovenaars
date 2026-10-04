@@ -1,4 +1,4 @@
-# 1.4-Scripting-met-Powershell
+﻿# 1.4-Scripting-met-Powershell
 # Opdracht 1-9 : Herschrijf het script van opdracht 1-6, zodat het van een functie gebruik maakt.
 
 # Maak een functie Ping-Addresss waarin je de code voor het testen van een IP-adres plaatst. We gebruiken als naming convention twee losse woorden met een streepje ertussen.
@@ -17,9 +17,9 @@
 
 #    Destination: 192.168.2.1
 
-# Ping Source           Address                   Latency BufferSize Status 
-#                                                    (ms)        (B)        
-# ---- ------           -------                   ------- ---------- ------ 
+# Ping Source           Address                   Latency BufferSize Status
+#                                                    (ms)        (B)
+# ---- ------           -------                   ------- ---------- ------
 #    1 CND0475T07       192.168.2.1                     1         32 Success
 #    2 CND0475T07       192.168.2.1                     0         32 Success
 #    3 CND0475T07       192.168.2.1                     0         32 Success
@@ -46,7 +46,7 @@ $continue = $true
 while ($continue) {
     # ask for ipaddress
     $ipaddress = Read-Host "Welke IP-adres wil je pingen?"
-    
+
     # check if the user wants to exit
     if ($ipaddress -eq "exit") {
         $continue = $false

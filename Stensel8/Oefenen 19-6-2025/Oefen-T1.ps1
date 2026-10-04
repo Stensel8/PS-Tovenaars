@@ -13,14 +13,14 @@ Write-Host -ForegroundColor Green $studentnummer
 $modulepath = $env:PSModulePath
 
 #C
-if (Test-Connection -target localhost -count 1 -TcpPort 5985) {
+if (Test-Connection -target localhost -count 1 -TcpPort 5985) { # DevSkim: ignore DS162092
     $5985 = "ja"
 } else {
     $5985 = "nee"
 }
 Write-Host $5985
 
-if (Test-Connection -target localhost -count 1 -TcpPort 5986) {
+if (Test-Connection -target localhost -count 1 -TcpPort 5986) { # DevSkim: ignore DS162092
     $5986 = "ja"
 } else {
     $5986 = "nee"
@@ -46,7 +46,7 @@ function resultaat {
     $5986
     $files
     $modulepath
-    $services    
+    $services
 }
 
 #G

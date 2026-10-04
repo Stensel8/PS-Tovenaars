@@ -4,7 +4,7 @@ Write-Output ("Status:           {0,-40}" -f "04-Install-Routing.ps1")
 
 # Get the public network interface
 $natIPConfiguration = Get-NetIPConfiguration -Detailed | Where-Object {
-    ($null -ne $_.IPv4DefaultGateway) 
+    ($null -ne $_.IPv4DefaultGateway)
 }
 # Enable forwarding
 Set-NetIPInterface -InterfaceIndex $natIPConfiguration.InterfaceIndex -Forwarding Enabled
@@ -18,7 +18,7 @@ $lanPrefixLength=$lanIPConfiguration.IPv4Address.prefixLength
 
 # Create subnet mask in dotted decimal notation. That feature does not exist in Powershell, we'll have to write our own functionality for this.
 # Convert the prefix length into a 32 bit integer, starting with <prefixLength> 1's and filled out with (32-<prefixLength>) 0's
-$subnetMaskNumber = [UInt32](([Math]::Pow(2,$lanPrefixLength)-1) * [Math]::Pow(2,32-$lanPrefixLength)) 
+$subnetMaskNumber = [UInt32](([Math]::Pow(2,$lanPrefixLength)-1) * [Math]::Pow(2,32-$lanPrefixLength))
 # Split this number into 4 bytes:
 $subnetMaskBytes=[System.BitConverter]::GetBytes($subnetMaskNumber)
 # Reverse the order, needed on Intel based CPUs.

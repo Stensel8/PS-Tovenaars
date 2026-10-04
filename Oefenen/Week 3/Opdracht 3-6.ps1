@@ -1,35 +1,77 @@
-# run this in on a windows server whome is a domain controller
+# Opdracht 3-6 : Het opvragen van domeincomputers uit de Active Directory
+# Moeilijkheid: 2/3
+# Voer dit script uit op een server met Active Directory (bijvoorbeeld de domain controller van de casus)
+# of op een computer waar RSAT (de module ActiveDirectory) is geinstalleerd.
+# (PowerUp) : Laat per domeincomputer zien hoeveel schijfruimte de C-schijf gebruikt
+# Gebruik: & ".\Opdracht 3-6.ps1" -SearchBase "OU=Workstations,DC=scripting,DC=local"
+#          Zonder -SearchBase zoeken we in het hele domein.
 
-# if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
-#     Write-Error "De Active Directory-module is niet geïnstalleerd. Stop script."
-#     return
-# }
-# Import-Module ActiveDirectory
+# De OU waarin gezocht wordt kun je als parameter meegeven
+param (
+    [string]$SearchBase
+)
 
-# $OU = "OU=Workstations,DC=example,DC=com"   # pas dit aan naar jouw OU
-# try {
-#     $computers = Get-ADComputer -Filter * -SearchBase $OU -Properties LastLogonDate
-# } catch {
-#     Write-Error "Fout bij ophalen van domeincomputers: $_"
-#     return
-# }
+# Het scherm leegmaken
+Clear-Host
 
-foreach ($c in $computers) {
-    $name = $c.Name
+# 1. Check of de module ActiveDirectory aanwezig is
+if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
+    Write-Error "De module ActiveDirectory is niet geinstalleerd. Het script stopt."
+    return
+}
+Import-Module -Name ActiveDirectory
 
-    try {
-        $ping = Test-Connection -ComputerName $name -Count 1 -ErrorAction Stop
-        $ip = $ping.IPv4Address.IPAddressToString
-        $status = "Aan"
-    } catch {
-        $ip = "Niet bereikbaar"
-        $status = "Uit"
+# 2. Waar zoeken we? Zonder parameter in het hele domein, zodat ook werkstations en member servers meekomen.
+# Een eigen OU geef je mee met -SearchBase. De juiste waarde vind je in de property DistinguishedName van een
+# computer, bijvoorbeeld CN=DC01,OU=Domain Controllers,DC=scripting,DC=local geeft de OU
+# OU=Domain Controllers,DC=scripting,DC=local
+
+# 3. Vraag de domeincomputers op en zet ze in een variabele, met foutafhandeling
+try {
+    if ([string]::IsNullOrWhiteSpace($SearchBase)) {
+        $SearchBase = (Get-ADDomain -ErrorAction Stop).DistinguishedName
     }
-
-    $lastLogon = $c.LastLogonDate
-    if (-not $lastLogon) { $lastLogon = "Nooit" }
-
-    Write-Host ("Naam: {0}; IP: {1}; Status: {2}; Laatste login: {3}" -f `
-        $name, $ip, $status, $lastLogon)
+    $domeincomputers = Get-ADComputer -Filter * -SearchBase $SearchBase -Properties IPv4Address, LastLogonDate -ErrorAction Stop
+}
+catch {
+    Write-Error "Fout bij het ophalen van de domeincomputers: $($_.Exception.Message)"
+    return
 }
 
+# 4. Print naam, ip-adres, aan/uit status en laatste inlogdatum
+$overzicht = foreach ($computer in $domeincomputers) {
+    # Is de computer bereikbaar? Dan staat hij aan.
+    $aan = Test-Connection -TargetName $computer.Name -Count 1 -Quiet
+
+    [PSCustomObject]@{
+        Name          = $computer.Name
+        Enabled       = $computer.Enabled
+        IPv4Address   = $computer.IPv4Address
+        Status        = if ($aan) { "Aan" } else { "Uit" }
+        LastLogonDate = if ($computer.LastLogonDate) { $computer.LastLogonDate } else { "Nooit" }
+    }
+}
+$overzicht | Format-Table -AutoSize
+
+# 5. (PowerUp) Schijfruimte van de C-schijf per domeincomputer met Get-ChildItem, Measure-Object en Invoke-Command.
+# Dit kan een paar minuten duren. Beperk $pad bijvoorbeeld tot "C:\Windows\Temp" om te testen.
+$pad = "C:\"
+$cred = Get-Credential -Message "Inloggegevens voor de remote computers"
+
+Write-Host "Hoeveelheid schijfruimte"
+Write-Host "------------------------"
+foreach ($computer in $domeincomputers) {
+    try {
+        # $using:pad geeft de variabele $pad van je eigen computer mee naar de remote computer.
+        # Invoke-Command is hier bedoeld: de opdracht is het remote uitvoeren (DevSkim: remoting is het onderwerp)
+        $grootte = Invoke-Command -ComputerName $computer.Name -Credential $cred -ErrorAction Stop -ScriptBlock { # DevSkim: ignore DS104456
+            (Get-ChildItem -Path $using:pad -Recurse -File -Force -ErrorAction SilentlyContinue |
+                Measure-Object -Property Length -Sum).Sum
+        }
+        Write-Host "$($computer.Name): $grootte"
+    }
+    catch {
+        # Extra foutafhandeling: de remote computer kan uit staan of WinRM kan geblokkeerd zijn
+        Write-Warning "Geen verbinding met $($computer.Name): $($_.Exception.Message)"
+    }
+}

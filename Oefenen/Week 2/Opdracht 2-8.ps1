@@ -1,23 +1,49 @@
-# Schrijf een script dat een lijst met unieke processen toont van het bedrijf Microsoft. Je oefent hiermee het maken van Where-Object om op eigenschapen te filteren. Remember: Get-Member om de eigenschappen te tonen. Sorteer de lijst op ProcessName. Hoe maak je de lijst uniek en verwijder je dubbele processen?
+# Opdracht 2-8 : Het uitvoeren van objectfuncties - het stoppen van processen.
+# Moeilijkheid: 2/3
+# Toon een lijst met unieke processen van het bedrijf Microsoft, gesorteerd op ProcessName.
+# Vraag welk proces gestopt moet worden (standaard "msedgewebview2", dat door de nieuwe versie van Teams gebruikt wordt)
+# en stop het proces met de methode Kill. Test eerst met -WhatIf en laat daarna bevestigen.
 
-# Het script vraagt vervolgens aan de gebruiker welk proces gestopt moet worden. Als de gebruiker niets invult, neem dan als standaardwaarde “msedgewebview2”, die door de nieuwe versie van Microsoft Teams gebruikt wordt.
+# Het scherm leegmaken
+Clear-Host
 
-# Maak gebruik van de objectfunctie (e.g. method) Kill om het geselecteerde proces te stoppen. Let op! Gebruik -WhatIf of -Confirm om respectievelijk te testen of te laten bevestigen.
+# 1. Filteren op eigenschappen met Where-Object (Get-Process | Get-Member laat de eigenschappen zien).
+# Sort-Object -Unique sorteert op ProcessName en haalt de dubbele processen eruit.
+$microsoftProcessen = Get-Process |
+    Where-Object { $_.Company -like "*Microsoft*" } |
+    Sort-Object -Property ProcessName -Unique
 
-$process = Get-Process | Where-Object { $_.Company -like "*Microsoft*" } | Sort-Object ProcessName | Get-Unique -AsString
+Write-Host "Unieke Microsoft processen:"
+$microsoftProcessen | ForEach-Object { Write-Host "$($_.Product) = $($_.ProcessName)" }
 
-Write-Host "Unieke Microsoft processen:" 
-$process | Select-Object -ExpandProperty ProcessName 
-
-$processName = Read-Host "Voer de naam van het proces in dat je wilt stoppen (standaard: msedgewebview2)"
-if (-not $processName) {
-    $processName = "msedgewebview2"
+# 2. Vraag welk proces gestopt moet worden. Zonder invoer nemen we de standaardwaarde.
+$standaard = "msedgewebview2"
+Write-Host
+$procesNaam = Read-Host -Prompt "Welk Microsoft proces wil je stoppen? [$standaard]"
+if ([string]::IsNullOrWhiteSpace($procesNaam)) {
+    $procesNaam = $standaard
 }
 
-$processToStop = Get-Process | Where-Object { $_.ProcessName -eq $processName -and $_.Company -like "*Microsoft*" }
+# 3. Zoek alle processen met deze naam. We stoppen alleen processen van Microsoft.
+# (Een programma als msedgewebview2 draait vaak meerdere keren tegelijk.)
+$teStoppen = @(Get-Process | Where-Object { $_.ProcessName -eq $procesNaam -and $_.Company -like "*Microsoft*" })
+if ($teStoppen.Count -eq 0) {
+    Write-Warning "Geen Microsoft proces gevonden met de naam: $procesNaam"
+    exit
+}
 
-if ($processToStop) {
-    $processToStop | Stop-Process -Confirm
-} else {
-    Write-Host "Proces niet gevonden: $processName"
+# 4. Eerst testen met -WhatIf: laat zien wat er zou gebeuren
+$teStoppen | Stop-Process -WhatIf
+
+# 5. Daarna laten bevestigen en stoppen met de objectfunctie (method) Kill
+Write-Warning "$procesNaam wordt gestopt ($($teStoppen.Count) proces(sen))..."
+$antwoord = Read-Host -Prompt "Weet je zeker dat je dit wilt doen? (j/n)"
+if ($antwoord -eq "j") {
+    foreach ($proces in $teStoppen) {
+        $proces.Kill()
+        Write-Host "Proces $($proces.Id) is gestopt." -ForegroundColor Green
+    }
+}
+else {
+    Write-Host "Er is niets gestopt."
 }

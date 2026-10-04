@@ -1,15 +1,38 @@
-# get-command *Module*
-# get-help get-module -Full
+# Opdracht 3-3 : Het opvragen van Firewall regels met de module NetSecurity.
+# Moeilijkheid: 2/3
+# (PowerUp) : Laat voor elke firewall-regel ook de gebruikte poort zien
+# Sommige firewall commando's werken pas als je PowerShell als administrator start.
 
-# get-module -ListAvailable *security*
+# Het scherm leegmaken
+Clear-Host
 
-# get-command -module *Netsecurity* | where-object {$_.Name -like "*firewall*"}
+# 1. Welke commando's zijn er rondom modules? Vraag de help op van Get-Module.
+# Get-Help Get-Module
 
-# Get-NetFirewallRule
+# 2. Welke modules gaan over security?
+Get-Module -ListAvailable *security*
 
-Get-NetFirewallPortFilter | where-object localport -eq 80 | 
-ForEach-Object {
-    get-netfirewallrule -instanceid $_.InstanceID
-} | format-table InstanceID, Protocol, LocalPort, RemotePort -AutoSize
+# 3. Alle commando's van de module NetSecurity, gefilterd op het woord Firewall
+Get-Command -Module NetSecurity | Where-Object { $_.Name -like "*Firewall*" }
 
-Get-NetFirewallPortFilter 
+# 4. Alle firewall regels voor HTTP verkeer: filter op de DisplayName en toon het in een tabel
+Get-NetFirewallRule | Where-Object { $_.DisplayName -like "*HTTP*" } |
+    Format-Table -Property DisplayName, Direction, Action, Enabled -AutoSize
+
+# 5. De poorten staan niet in de regel zelf maar in het port filter: Get-NetFirewallPortFilter.
+# Combineer beide: begin bij de port filters en haal per filter de bijbehorende regel op.
+Get-NetFirewallPortFilter | Where-Object { $_.LocalPort -eq "80" } |
+    Get-NetFirewallRule |
+    Format-Table -Property DisplayName, Direction, Action, Enabled -AutoSize
+
+# 6. Met ForEach-Object laat je per regel ook de poort zien (PowerUp)
+Get-NetFirewallPortFilter | Where-Object { $_.LocalPort -eq "80" } | ForEach-Object {
+    $regel = $_ | Get-NetFirewallRule
+    [PSCustomObject]@{
+        DisplayName = $regel.DisplayName
+        Direction   = $regel.Direction
+        Action      = $regel.Action
+        Protocol    = $_.Protocol
+        LocalPort   = $_.LocalPort
+    }
+} | Format-Table -AutoSize

@@ -1,3 +1,3 @@
-foreach ($computername in $myhosts) { 
-    
+foreach ($computername in $myhosts) {
+
 }

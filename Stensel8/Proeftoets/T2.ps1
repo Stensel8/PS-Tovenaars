@@ -1,23 +1,33 @@
 Clear-Host
 
-#A
-$commands = Get-Command -Module "microsoft.powershell.utillty"
-$verbs = (Get-verb).Verb
+$commands = (Get-Command -Module "Microsoft.PowerShell.Utility").Name
+$verbs = (Get-Verb).Verb
 
-#B
 function Test-Verb {
     param (
-        $VerbToCheck
-    ) if (Get-Verb -verb $VerbToCheck){
-        return "verb toegestaan"
-    } else {
-        return "verb niet toegestaan"
-    }   
+        [string]
+        $zoekwoord
+    )
+
+    try {
+        $verbs = (Get-verb).verb
+    }
+    catch {
+        Write-Error "Fout bij het ophalen van verbs"
+    }
+
+    foreach ($verb in $verbs) {
+        if ($verb -eq $zoekwoord) {
+            return "Ja, nice."
+        }
+
+    }
+    return "Nee, sorry."
+
 }
 
-#C
-$computerName = $env:COMPUTERNAME
+$computerName = $ENV:COMPUTERNAME
+$BIOSSerialNumber = (Get-CimInstance Win32_BIOS).SerialNumber
 
-$biosSerialnumber = (Get-CimInstance Win32_bios).SerialNumber
-
-Get-ComputerInfo $biosSerialnumber
+Write-Host "Aantal commando's: $($commands.Count), aantal toegestane werkwoorden: $($verbs.Count)"
+Write-Host "Computernaam: $computerName, BIOS serienummer: $BIOSSerialNumber"

@@ -1,4 +1,4 @@
-# 1.4-Scripting-met-Powershell
+﻿# 1.4-Scripting-met-Powershell
 # Opdracht 1-8 : Maak een script dat een gegeven password checkt.
 
 Clear-Host

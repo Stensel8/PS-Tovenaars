@@ -1,0 +1,702 @@
+﻿
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.87, (build 5.87.17921.1)
+Started On Sat Mar 27 17:13:20 2021
+
+Engine: 1.1.17800.5
+Signatures: 1.331.1232.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sat Mar 27 17:15:18 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.88, (build 5.88.18031.1)
+Started On Tue Apr 20 07:21:39 2021
+
+Engine: 1.1.17900.7
+Signatures: 1.333.1197.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Apr 20 07:23:28 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.89, (build 5.89.18135.1)
+Started On Tue May 18 08:57:18 2021
+
+Engine: 1.1.18000.5
+Signatures: 1.335.1214.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue May 18 08:59:01 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.90, (build 5.90.18227.1)
+Started On Wed Jun 16 09:46:04 2021
+
+Engine: 1.1.18100.6
+Signatures: 1.339.1138.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Wed Jun 16 09:48:18 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.91, (build 5.91.18330.1)
+Started On Fri Jul 30 11:54:56 2021
+
+Engine: 1.1.18200.4
+Signatures: 1.341.1182.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Fri Jul 30 11:57:17 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.92, (build 5.92.18432.1)
+Started On Fri Aug 20 05:30:45 2021
+
+Engine: 1.1.18300.4
+Signatures: 1.343.1365.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Fri Aug 20 05:33:05 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.93, (build 5.93.18534.1)
+Started On Thu Sep 23 09:31:42 2021
+
+Engine: 1.1.18400.5
+Signatures: 1.347.366.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Thu Sep 23 09:34:23 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.94, (build 5.94.18626.1)
+Started On Thu Oct 21 16:03:03 2021
+
+Engine: 1.1.18500.10
+Signatures: 1.349.1138.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Thu Oct 21 16:05:24 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.95, (build 5.95.18728.1)
+Started On Wed Nov 17 09:14:07 2021
+
+Engine: 1.1.18600.4
+Signatures: 1.351.640.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Wed Nov 17 09:16:40 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.96, (build 5.96.18833.1)
+Started On Tue Dec 21 03:09:16 2021
+
+Engine: 1.1.18700.4
+Signatures: 1.353.1477.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Dec 21 03:11:53 2021
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.97, (build 5.97.18853.1)
+Started On Sat Jan 15 13:17:20 2022
+
+Engine: 1.1.18800.4
+Signatures: 1.355.668.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sat Jan 15 13:19:47 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.98, (build 5.98.18927.1)
+Started On Tue Feb 15 08:19:46 2022
+
+Engine: 1.1.18800.4
+Signatures: 1.355.2221.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Feb 15 08:22:39 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.99, (build 5.99.19025.1)
+Started On Wed Mar 23 07:53:46 2022
+
+Engine: 1.1.18900.3
+Signatures: 1.359.349.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Wed Mar 23 07:56:18 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.100, (build 5.100.19137.2)
+Started On Tue Apr 19 19:43:09 2022
+
+Engine: 1.1.19000.8
+Signatures: 1.361.493.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Apr 19 19:45:32 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.101, (build 5.101.19137.3)
+Started On Tue May 17 12:48:49 2022
+
+Engine: 1.1.19000.8
+Signatures: 1.363.434.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue May 17 12:50:55 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.102, (build 5.102.19137.5)
+Started On Tue Jun 21 10:59:36 2022
+
+Engine: 1.1.19200.6
+Signatures: 1.367.792.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Jun 21 11:01:44 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.103, (build 5.103.19430.1)
+Started On Wed Jul 20 14:37:06 2022
+
+Engine: 1.1.19300.2
+Signatures: 1.369.78.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Wed Jul 20 14:39:51 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.104, (build 5.104.19529.1)
+Started On Mon Aug 22 16:23:12 2022
+
+Engine: 1.1.19400.3
+Signatures: 1.371.550.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Mon Aug 22 16:26:02 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.105, (build 5.105.19638.1)
+Started On Fri Sep 23 09:12:14 2022
+
+Engine: 1.1.19500.2
+Signatures: 1.373.627.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Fri Sep 23 09:15:24 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.106, (build 5.106.19726.1)
+Started On Tue Oct 18 14:21:37 2022
+
+Engine: 1.1.19600.3
+Signatures: 1.375.683.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Oct 18 14:35:28 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.107, (build 5.107.19833.3)
+Started On Wed Nov 16 07:51:12 2022
+
+Engine: 1.1.19700.3
+Signatures: 1.377.540.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Wed Nov 16 07:53:39 2022
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.108, (build 5.108.19833.5)
+Started On Thu Jan 12 20:24:43 2023
+
+Engine: 1.1.19700.3
+Signatures: 1.379.706.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Thu Jan 12 20:39:07 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.109, (build 5.109.19957.1)
+Started On Sun Jan 22 11:39:07 2023
+
+Engine: 1.1.19900.2
+Signatures: 1.381.429.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Jan 22 15:48:02 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.110, (build 5.110.19957.2)
+Started On Fri Feb 17 15:44:04 2023
+
+Engine: 1.1.19900.2
+Signatures: 1.381.1972.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Fri Feb 17 15:47:04 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.111, (build 5.111.20128.1)
+Started On Thu Mar 23 10:20:14 2023
+
+Engine: 1.1.20000.2
+Signatures: 1.383.303.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Thu Mar 23 10:23:26 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.112, (build 5.112.20232.1)
+Started On Sun Apr 23 09:51:26 2023
+
+Engine: 1.1.20100.6
+Signatures: 1.385.537.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Apr 23 11:23:18 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.113, (build 5.113.20335.1)
+Started On Mon May 22 06:59:46 2023
+
+Engine: 1.1.20200.4
+Signatures: 1.387.1387.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Mon May 22 08:11:14 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.114, (build 5.114.23060.1)
+Started On Mon Jun 26 19:41:47 2023
+
+Engine: 1.1.20300.3
+Signatures: 1.389.1348.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Mon Jun 26 19:44:39 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.115, (build 5.115.23070.1)
+Started On Wed Jul 26 09:01:59 2023
+
+Engine: 1.1.20300.3
+Signatures: 1.391.2062.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Wed Jul 26 09:55:59 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.116, (build 5.116.23080.1)
+Started On Tue Aug 22 13:22:24 2023
+
+Engine: 1.1.20300.3
+Signatures: 1.393.595.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Tue Aug 22 13:25:26 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.117, (build 5.117.23090.1)
+Started On Sun Sep 24 15:51:23 2023
+
+Engine: 1.1.23060.1005
+Signatures: 1.395.939.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Sep 24 15:54:26 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.118, (build 5.118.23100.1)
+Started On Sun Oct 29 15:39:15 2023
+
+Engine: 1.1.23080.2005
+Signatures: 1.397.1344.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Oct 29 15:42:14 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.119, (build 5.119.23110.1001)
+Started On Sun Nov 26 15:23:59 2023
+
+Engine: 1.1.23090.2007
+Signatures: 1.399.892.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Nov 26 15:26:16 2023
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.120, (build 5.120.24010.1001)
+Started On Sun Jan 21 13:17:51 2024
+
+Engine: 1.1.23100.2009
+Signatures: 1.403.317.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Jan 21 13:20:17 2024
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.121, (build 5.121.24020.1001)
+Started On Sun Feb 25 20:02:49 2024
+
+Engine: 1.1.23100.2009
+Signatures: 1.403.2504.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Feb 25 20:05:26 2024
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.122, (build 5.122.24030.2001)
+Started On Sun Mar 24 10:36:00 2024
+
+Engine: 1.1.23110.2
+Signatures: 1.405.101.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Mar 24 10:59:12 2024
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.123, (build 5.123.24040.1001)
+Started On Sun Apr 21 15:41:19 2024
+
+Engine: 1.1.24020.9
+Signatures: 1.407.485.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Apr 21 15:43:15 2024
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.124, (build 5.124.24050.1001)
+Started On Mon May 27 08:38:45 2024
+
+Engine: 1.1.24030.4
+Signatures: 1.409.399.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Mon May 27 08:41:26 2024
+
+
+Return code: 0 (0x0)
+
+---------------------------------------------------------------------------------------
+Microsoft Windows Malicious Software Removal Tool v5.125, (build 5.125.24060.1001)
+Started On Sun Jun 23 16:51:50 2024
+
+Engine: 1.1.24040.1
+Signatures: 1.411.81.0
+MpGear: 1.1.16330.1
+Run Mode: Scan Run From Windows Update
+
+Results Summary:
+----------------
+No infection found.
+Successfully Submitted Heartbeat Report
+Microsoft Windows Malicious Software Removal Tool Finished On Sun Jun 23 16:54:18 2024
+
+
+Return code: 0 (0x0)

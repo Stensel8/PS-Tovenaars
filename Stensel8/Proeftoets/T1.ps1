@@ -1,36 +1,34 @@
-#A
 $studentnaam = "Sten Tijhuis"
-$studentnummer = "550600"
+$studentnummer = 550600
 
-Write-Host -ForegroundColor Green $studentnaam
-Write-Host -ForegroundColor Green $studentnummer
+Clear-Host
 
-#B
-$modulepath = $env:PSModulePath
+Write-Host $studentnaam, $studentnummer -ForegroundColor Green
 
-#C
-if (Test-Connection -target localhost -count 1 -TcpPort 5985) {
-    $5985 = "ja"
+$modulepath = $ENV:PSModulePath
+
+if (Test-Connection -TargetName powershell-sten.westeurope.cloudapp.azure.com -TcpPort 5985) {
+    $5985 = "Ja"
 } else {
-    $5985 = "ja"
+    $5985 = "Nee"
 }
 
-if (Test-Connection -target localhost -count 1 -TcpPort 5986) {
-    $5986 = "ja"
+if (Test-Connection -TargetName powershell-sten.westeurope.cloudapp.azure.com -TcpPort 5986) {
+    $5986 = "Ja"
 } else {
-    $5986 = "nee"
+    $5986 = "Nee"
 }
 
-#D
-$services = Get-Service -Exclude McpManagementService, dcsvc
-$started = {services | Where-Object {$_.Status -eq "Running"}}.count
+$services = Get-Service -Exclude McpManagementService, Dcsvc, WaaSMedicSvc
+$started = (get-service -Exclude McpManagementService, Dcsvc, WaaSMedicSvc | Where-Object {$_.Status -eq 'running'}).count
 
 #E
-$path = C:\
-$files = @(Get-ChildItem -Path $path -file | ForEach-Object object {$_.name})
 
-#f
-function result {
+$files = @((Get-ChildItem -path ".\" -File).FullName)
+
+#F
+
+function Resultaat {
     $studentnaam
     $studentnummer
     $started
@@ -38,8 +36,6 @@ function result {
     $5986
     $files
     $modulepath
-    $services    
+    $services
 }
-
-#G
-result | Out-File -FilePath .\T1.1_result
+Resultaat | Out-File -FilePath ".\T1.result" -Append -Force

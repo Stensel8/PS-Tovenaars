@@ -8,7 +8,9 @@ try {
         Write-Host "Already a domain controller. Exiting." -ForegroundColor Yellow
         exit 0
     }
-} catch {}
+} catch {
+    Write-Verbose "No domain controller found yet, continuing with the installation."
+}
 
 # Install AD-Domain-Services if needed
 $adFeature = Get-WindowsFeature AD-Domain-Services
@@ -29,7 +31,7 @@ if ((Read-Host "Rename computer from '$currentName'? (Y/N)") -eq 'Y') {
 # Domain configuration
 function Test-DomainName {
     param([string]$name)
-    
+
     # Basic validation: 2-253 chars, contains dot, valid DNS format
     $name -match '^(?=.{2,253}$)[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)+$' -and
     ($name.Split('.') | ForEach-Object { $_.Length -le 63 })
@@ -37,14 +39,14 @@ function Test-DomainName {
 
 function Test-Password {
     param([SecureString]$password)
-    
+
     $cred = [System.Net.NetworkCredential]::new("", $password)
     $plain = $cred.Password
-    
-    $plain.Length -ge 8 -and 
-    $plain -match '\d' -and 
-    $plain -match '[a-z]' -and 
-    $plain -match '[A-Z]' -and 
+
+    $plain.Length -ge 8 -and
+    $plain -match '\d' -and
+    $plain -match '[a-z]' -and
+    $plain -match '[A-Z]' -and
     $plain -match '[\W_]'
 }
 

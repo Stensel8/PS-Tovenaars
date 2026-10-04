@@ -6,11 +6,26 @@ Lekker toveren met PowerShell.
 
 ## Inhoud
 
+* [Opdrachten week 1 t/m 8](#opdrachten-week-1-tm-8)
 * [Voorwaarden](#voorwaarden)
 * [GPG Commit Signing Setup](#gpg-commit-signing-setup)
 * [Branching Regels](#branching-regels)
 
 ---
+
+## Opdrachten week 1 t/m 8
+
+De uitwerkingen van alle opdrachten staan in [`Oefenen/`](Oefenen/README.md), per week in een eigen map
+(`Oefenen/Week 1` t/m `Oefenen/Week 8`). Week 8 is de proeftoets. In de README van die map staat per week welke
+opdrachten er zijn, wat je nodig hebt om ze te draaien en wat er wel en niet getest is.
+
+Overige mappen:
+
+* `Stensel8/` bevat het oude archief van losse oefenscripts en de eerste pogingen van de proeftoets.
+* `Casus/` bevat de scripts van school voor de casus-omgeving (domain controller, database server, werkstation).
+
+---
+
 ## Configure VMs
 Run the configure-vm.ps1 to turn off and disable unnecessary services and features for Windows VMs
 

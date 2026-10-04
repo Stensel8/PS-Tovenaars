@@ -12,7 +12,8 @@ if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administra
                   -Verb RunAs
     Exit
 }
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+# Alleen voor dit proces (Scope Process), zodat het script ook op een computer met een strenge policy kan draaien
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force # DevSkim: ignore DS113853
 
 # Disable Windows Update
 Write-Host "Disabling Windows Update..."

@@ -1,4 +1,4 @@
-
+﻿
 
 # 1) Vraag om domein
 $domain = Read-Host "Voer domein in (zonder https://)"
@@ -11,7 +11,7 @@ function Test-HttpVersion {
         # Sla het resultaat op in een variabele
         $response = Invoke-WebRequest -Uri $uri -Method Head -HttpVersion $version -TimeoutSec 10
         Write-Host "HTTP/${version}: Ondersteund" -ForegroundColor Green
-        
+
         # Controleer Alt-Svc header voor HTTP/3 indicatie
         if ($response.Headers.ContainsKey("Alt-Svc")) {
             $altSvc = $response.Headers["Alt-Svc"]
@@ -23,12 +23,12 @@ function Test-HttpVersion {
         } else {
             Write-Host "  HTTP/${version}: HTTP/3 niet ondersteund (geen Alt-Svc header)" -ForegroundColor Yellow
         }
-        
+
         # Toon Server header
         if ($response.Headers.ContainsKey('Server')) {
             Write-Host "  Server: $($response.Headers['Server'])" -ForegroundColor Cyan
         }
-        
+
         # Toon extra nuttige headers
         $headersToShow = @('X-Powered-By', 'Via', 'X-Version')
         foreach ($header in $headersToShow) {
@@ -36,11 +36,11 @@ function Test-HttpVersion {
                 Write-Host "  ${header}: $($response.Headers[$header])" -ForegroundColor Cyan
             }
         }
-        
+
     } catch {
         Write-Host "HTTP/${version}: Niet ondersteund of fout" -ForegroundColor Red
         Write-Host "  Reden: $($_.Exception.Message)" -ForegroundColor Yellow
-        
+
         # Meer gedetailleerde foutinformatie
         if ($_.Exception.Response) {
             Write-Host "  Status: $($_.Exception.Response.StatusCode.value__) - $($_.Exception.Response.StatusDescription)" -ForegroundColor Yellow
@@ -57,10 +57,10 @@ foreach ($v in @("1.0","1.1","2.0")) {
 Write-Host "`nTesting HTTP/3 capabilities:" -ForegroundColor Cyan
 if (Get-Command curl.exe -ErrorAction SilentlyContinue) {
     Write-Host "Uitvoeren van: curl.exe --http3 -I $uri" -ForegroundColor Gray
-    
+
     # Gebruik --verbose voor meer diagnostische info
     $output = curl.exe --http3 --verbose -I $uri 2>&1
-    
+
     # Controleer op HTTP/3 in de output
     if ($output -match 'using HTTP/3') {
         Write-Host "HTTP/3: Succesvol ondersteund en gebruikt" -ForegroundColor Green
@@ -88,13 +88,13 @@ try {
     Write-Host "`nTLS informatie controleren:" -ForegroundColor Cyan
     $tcpClient = New-Object Net.Sockets.TcpClient
     $tcpClient.Connect($domain, 443)
-    
+
     $sslStream = New-Object System.Net.Security.SslStream $tcpClient.GetStream()
     $sslStream.AuthenticateAsClient($domain)
-    
+
     Write-Host "TLS Protocol: $($sslStream.SslProtocol)" -ForegroundColor Cyan
     Write-Host "Cipher: $($sslStream.CipherAlgorithm) $($sslStream.CipherStrength) bits" -ForegroundColor Cyan
-    
+
     $tcpClient.Close()
 } catch {
     Write-Host "Kon TLS informatie niet ophalen: $($_.Exception.Message)" -ForegroundColor Red

@@ -14,7 +14,7 @@ $selectedProcesses = $processes | Sort-Object -Property VM -Descending
 $selectedProcesses | Select-Object -First 10
 
 # De gesorteerde processen converteren naar HTML en opslaan in een bestand
-$selectedProcesses | 
+$selectedProcesses |
     Select-Object Name, Id, CPU, VM, WorkingSet, Description |
     ConvertTo-Html -Title "Processen gesorteerd op virtueel geheugengebruik" -Body "<h2>Overzicht van processen gesorteerd op virtueel geheugengebruik</h2>" |
     Out-File -FilePath "$env:USERPROFILE\Documents\ProcessenRapport.html"
