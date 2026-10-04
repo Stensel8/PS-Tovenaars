@@ -14,7 +14,14 @@ function Ping-Address {
     )
 
     Write-Host "Pinging... $Ipaddress"
-    Test-Connection -TargetName $Ipaddress -IPv4 -Count 3
+
+    # Foutafhandeling (idee van Hintenhaus04): een hostnaam die niet gevonden wordt geeft een nette melding
+    try {
+        Test-Connection -TargetName $Ipaddress -IPv4 -Count 3 -ErrorAction Stop
+    }
+    catch {
+        Write-Host "Pingen van $Ipaddress is mislukt: $($_.Exception.Message)" -ForegroundColor Red
+    }
     Write-Host # lege regel
 }
 
