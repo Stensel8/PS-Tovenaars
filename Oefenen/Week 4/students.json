@@ -1,0 +1,16 @@
+[
+    {
+        "student": {
+            "firstName": "Jan",
+            "lastName": "Jansen",
+            "studentnummer": "12345"
+        }
+    },
+    {
+        "student": {
+            "firstName": "Piet",
+            "lastName": "Pietersma",
+            "studentnummer": "12346"
+        }
+    }
+]

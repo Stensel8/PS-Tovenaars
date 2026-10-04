@@ -1,16 +1,24 @@
-# get-command -Module NetTCPIP
+# Opdracht 3-5 : Overzicht van alle TCP/IP-poorten die momenteel in gebruik zijn op poort 443, met bijbehorend proces.
+# Moeilijkheid: 3/3
 
-# Get-NetTCPConnection
+# Het scherm leegmaken
+Clear-Host
 
-# get-help Get-NetTCPConnection 
+# 1. Welke commando's heeft de module NetTCPIP? Get-NetTCPConnection toont de TCP connecties.
+# Get-Command -Module NetTCPIP
+# Get-Help Get-NetTCPConnection
 
-# Get-NetTCPConnection -RemoteAddress -remoteport
+# 2. Welke properties heeft een connectie? RemoteAddress en RemotePort laten de externe kant zien.
+# Get-NetTCPConnection | Get-Member
 
-foreach ($process in (Get-NetTCPConnection -RemotePort 443).OwningProcess) {
-    $process
-    Get-Process | where-object { $_.Id -in $process.OwningProcess } | Select-Object ProcessName, Id
-}
+# 3. Filter op remote port 443 en toon de ip-adressen met het proces (id) dat het verkeer veroorzaakt
+Get-NetTCPConnection -RemotePort 443 | Select-Object -Property RemoteAddress, OwningProcess
 
+# 4. Zet de proces-id's in een lijst. Je krijgt objecten in plaats van getallen, dus gebruik haakjes en
+# de dot-notatie om maar 1 eigenschap te selecteren: (commando).OwningProcess
+$processIds = (Get-NetTCPConnection -RemotePort 443).OwningProcess | Sort-Object -Unique
 
-$processid = (Get-NetTCPConnection | where-object { $_.RemotePort -eq 443 }).OwningProcess
-get-Process | where-object { $_.Id -in $processid} | Select-Object ProcessName, Id | sort-object Descending
+# 5. Zoek de bijbehorende procesnamen: een filter met -in vergelijkt een waarde met een lijst
+Get-Process | Where-Object { $_.Id -in $processIds } |
+    Select-Object -Property ProcessName, Id |
+    Sort-Object -Property ProcessName
