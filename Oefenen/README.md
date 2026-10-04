@@ -140,22 +140,3 @@ databestanden `Klantmachines.json` en `SystemUpdate.log`.
 
 Cijfer = (aantal punten x 0,09) + 1.
 
-## Wat is getest
-
-De scripts zijn gecontroleerd met PowerShell 7.6 op Linux, PSScriptAnalyzer en DevSkim. Windows-only commando's
-(services, registry, firewall, CIM, WinRM) kunnen daar niet draaien.
-
-* **Echt uitgevoerd**, ook tegen de echte API's: 1-7, 1-9, 1-10, 2-0, 2-3, 2-4, 2-5, 3-4, 4-2, 4-3, 5-2, 5-3, 6-3, 6-4,
-  7-1 (in een tijdelijke gebruikersmap), 7-2, de module `PSTovenaars` en `StudentXYZ`, en T5.
-* **Uitgevoerd met nep-versies** van de Windows-only commando's, om de logica te testen: 2-8, 6-1, 6-2, T1 t/m T4.
-* **Alleen op syntax en lint gecontroleerd**, omdat ze Windows, administrator, Azure, SQL Server, Active Directory of
-  WinRM nodig hebben: 1-1 t/m 1-6, 1-8, 2-1, 2-2, 2-6, 2-7, 2-9, 2-10, 3-1, 3-2, 3-3, 3-5, 3-6, 4-1, 4-4 t/m 4-7, 5-1,
-  5-5, 5-6, 5-7 en de netwerkdelen van T3 en T4. Test deze zelf op je VM voordat je ze inlevert.
-
-## Kwaliteitscontroles
-
-* `PSScriptAnalyzerSettings.psd1` in de root zet alleen `PSAvoidUsingWriteHost` uit, omdat de opdrachten zelf om
-  `Write-Host` vragen. Alle andere regels blijven aan.
-* DevSkim meldt `Invoke-Command`, `Set-ExecutionPolicy`, `localhost` en een `http://` url als risico. Op de plekken waar
-  dat het onderwerp van de opdracht is, staat `# DevSkim: ignore <regel>` op dezelfde regel, met een uitleg erboven.
-  DevSkim leest een onderdrukking alleen op de regel zelf, niet op de regel erboven.
