@@ -55,13 +55,14 @@ foreach ($computerName in $myHosts) {
 $cred = Get-Credential -UserName "Administrator" -Message "Inloggegevens voor de VM's"
 
 # 7. Maak per VM een remote PowerShell session en voer Get-Service -Name W32time uit
-# (SkipCACheck en SkipCNCheck zijn nodig omdat de VM's geen vertrouwd certificaat hebben)
-$sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+# Deze sessie loopt over HTTP (poort 5985) en niet over SSL, dus er is geen servercertificaat om te controleren.
+# De opties -SkipCACheck en -SkipCNCheck zijn hier niet nodig (ze gelden alleen voor -UseSSL) en zetten we dus niet aan.
+# Omdat de VM's niet in een domein zitten, vertrouwen we ze via de TrustedHosts (stap 4). Doe dat alleen in een lab.
 
 foreach ($computerName in $myHosts) {
     $session = $null
     try {
-        $session = New-PSSession -ComputerName $computerName -Credential $cred -SessionOption $sessionOption -ErrorAction Stop
+        $session = New-PSSession -ComputerName $computerName -Credential $cred -ErrorAction Stop
         Write-Host "Connected met $computerName"
         # Invoke-Command is hier bedoeld: de opdracht is het remote uitvoeren (DevSkim: remoting is het onderwerp)
         Invoke-Command -Session $session -ScriptBlock { Get-Service -Name W32time } # DevSkim: ignore DS104456

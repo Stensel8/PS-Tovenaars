@@ -44,6 +44,10 @@ Write-Host "Opgeslagen in `$heartbeat: $heartbeat"
 # Met Invoke-Command vragen we de naam van de server op en bewaren die in $serverName.
 $server = "powershell-scripting.westeurope.cloudapp.azure.com"
 $cred = Get-Credential -Message "Inloggegevens voor $server"
+
+# Let op: -SkipCACheck en -SkipCNCheck zet de controle van het servercertificaat uit. Dat eist de opdracht, omdat
+# de toetsserver een zelf-gesigneerd certificaat heeft. Gebruik dit NOOIT voor een echte server: iemand op het
+# netwerk kan zich dan voordoen als de server en je inloggegevens onderscheppen. Daar gebruik je een vertrouwd certificaat.
 $sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
 
 try {

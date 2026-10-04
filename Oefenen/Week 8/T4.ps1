@@ -50,8 +50,18 @@ $studentnummer = "123456"
 $computerName = $env:COMPUTERNAME
 $BIOSSerialNumber = (Get-CimInstance -ClassName Win32_BIOS).SerialNumber
 
+# Een waarde met een apostrof zou het SQL statement openbreken (SQL injection): de computernaam en het BIOS
+# serienummer zijn instelbaar. In een T-SQL tekst verdubbel je daarom elke apostrof.
+$studentnummerSql = ([string]$studentnummer).Replace("'", "''")
+$computerNameSql = ([string]$computerName).Replace("'", "''")
+$BIOSSerialNumberSql = ([string]$BIOSSerialNumber).Replace("'", "''")
+
 # Maak een PSSession object zoals in opgave 3c (over SSL, met een session option)
 $cred = Get-Credential -Message "Inloggegevens voor $server"
+
+# Let op: -SkipCACheck en -SkipCNCheck zet de controle van het servercertificaat uit. Dat eist de opdracht, omdat
+# de toetsserver een zelf-gesigneerd certificaat heeft. Gebruik dit NOOIT voor een echte server: iemand op het
+# netwerk kan zich dan voordoen als de server en je inloggegevens onderscheppen. Daar gebruik je een vertrouwd certificaat.
 $sessionOption = New-PSSessionOption -SkipCACheck -SkipCNCheck
 
 try {
@@ -71,9 +81,9 @@ try {
                 BIOSSerialNumber
             )
             VALUES (
-                '$using:studentnummer',
-                '$using:computerName',
-                '$using:BIOSSerialNumber'
+                '$using:studentnummerSql',
+                '$using:computerNameSql',
+                '$using:BIOSSerialNumberSql'
             )"
     }
     Write-Host "De gegevens zijn toegevoegd aan de database."
