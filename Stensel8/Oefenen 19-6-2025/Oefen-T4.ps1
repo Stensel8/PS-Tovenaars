@@ -13,6 +13,6 @@ function Get-WebContent {
     param (
         $filename
     )
-    $request = "stentijhuis.nl/$filename"
-
+    $request = "https://stentijhuis.nl/$filename"
+    return Invoke-WebRequest -Uri $request
 }
